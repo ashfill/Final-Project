@@ -1,0 +1,27 @@
+﻿@model FinalProject3.Manufacturer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Manufacturer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ManufactuerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManufactuerName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ManufactuerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -32,7 +32,7 @@ namespace FinalProject2.Controllers
             if(!string.IsNullOrEmpty(manufacturerID))
             {
                 manufID = Convert.ToInt32(manufacturerID);
-                List<Make> makes = db.Makes.Where(x => x.Manufacturers.M)
+                List<Make> makes = db.Makes.Where(x => x.ManufacturerID == manufID).ToList();
             }
             return null;
         }

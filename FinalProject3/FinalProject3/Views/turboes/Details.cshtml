@@ -1,0 +1,51 @@
+﻿@model FinalProject3.turbo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>turbo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TurboName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TurboName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TurboHPRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TurboHPRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TurboTurbineSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TurboTurbineSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Engine1.EngineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Engine1.EngineName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TurboID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

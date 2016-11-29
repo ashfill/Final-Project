@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FinalProject3.turbo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TurboName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TurboHPRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TurboTurbineSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Engine1.EngineName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TurboName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TurboHPRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TurboTurbineSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Engine1.EngineName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TurboID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TurboID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TurboID })
+        </td>
+    </tr>
+}
+
+</table>
