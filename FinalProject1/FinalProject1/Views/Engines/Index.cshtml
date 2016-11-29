@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FinalProject1.Engine>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EngineName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EngineHP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EngineTorque)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EngineName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EngineHP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EngineTorque)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EngineID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EngineID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EngineID })
+        </td>
+    </tr>
+}
+
+</table>

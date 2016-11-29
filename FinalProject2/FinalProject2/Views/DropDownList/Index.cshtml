@@ -1,0 +1,19 @@
+﻿@model FinalProject2.Models.Class1
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+
+<h2>Index</h2>
+<table>
+    <tr>
+        <td>
+            <label>Manufacturer</label>
+        </td>
+        <td>
+            @Html.DropDownListFor(x => x.ManufacturerName, Model.ManufacturerName, "--Select--", new { @id = "ddlManufacturer" });  
+        </td>
+    </tr>
+</table>
+

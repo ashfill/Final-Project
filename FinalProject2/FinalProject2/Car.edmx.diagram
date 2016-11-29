@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2eebe40227f444ac92cbeca90fe6ba91" Name="Diagram1">
+        <EntityTypeShape EntityType="FinalProject1Model.Car" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject1Model.CarModel1" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject1Model.Engine" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject1Model.Make" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject1Model.Manufacturer" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject1Model.Transmission" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject1Model.Turbo" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="FinalProject1Model.FK_Car_CarModel1" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject1Model.FK_Car_Engine" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject1Model.FK_Car_Make" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject1Model.FK_Car_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject1Model.FK_Car_Transmission" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject1Model.FK_Car_Turbo" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject1Model.Engine_Transmission" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject1Model.Engine_Turbo" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject1Model.Make_CarModel" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject1Model.Manufacturer_Make" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

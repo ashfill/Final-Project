@@ -1,0 +1,830 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CamShaft">
+          <Key>
+            <PropertyRef Name="CamShaftID" />
+          </Key>
+          <Property Name="CamShaftID" Type="int" Nullable="false" />
+          <Property Name="CamShaftManufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CamShaftHPRating" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engine">
+          <Key>
+            <PropertyRef Name="EngineID" />
+          </Key>
+          <Property Name="EngineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EngineName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EngineHP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EngineTorque" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engine/CamShaft">
+          <Key>
+            <PropertyRef Name="EngineID" />
+            <PropertyRef Name="CamShaftID" />
+          </Key>
+          <Property Name="EngineID" Type="int" Nullable="false" />
+          <Property Name="CamShaftID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engine/PistonRings">
+          <Key>
+            <PropertyRef Name="EngineID" />
+            <PropertyRef Name="PistonRingsID" />
+          </Key>
+          <Property Name="EngineID" Type="int" Nullable="false" />
+          <Property Name="PistonRingsID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engine/Pistons">
+          <Key>
+            <PropertyRef Name="EngineID" />
+            <PropertyRef Name="PistonsID" />
+          </Key>
+          <Property Name="EngineID" Type="int" Nullable="false" />
+          <Property Name="PistonsID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engine/Transmission">
+          <Key>
+            <PropertyRef Name="EngineID" />
+            <PropertyRef Name="TransmissionID" />
+          </Key>
+          <Property Name="EngineID" Type="int" Nullable="false" />
+          <Property Name="TransmissionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engine/Turbo">
+          <Key>
+            <PropertyRef Name="EngineID" />
+            <PropertyRef Name="TurboID" />
+          </Key>
+          <Property Name="EngineID" Type="int" Nullable="false" />
+          <Property Name="TurboID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Make">
+          <Key>
+            <PropertyRef Name="MakeID" />
+          </Key>
+          <Property Name="MakeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MakeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MakeYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Make/Model">
+          <Key>
+            <PropertyRef Name="MakeID" />
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="MakeID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="manufacturer">
+          <Key>
+            <PropertyRef Name="manufacturerID" />
+          </Key>
+          <Property Name="manufacturerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="manufacturerName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="manufacturer/make">
+          <Key>
+            <PropertyRef Name="manufacturerID" />
+            <PropertyRef Name="MakeID" />
+          </Key>
+          <Property Name="manufacturerID" Type="int" Nullable="false" />
+          <Property Name="MakeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModelName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model/Engine">
+          <Key>
+            <PropertyRef Name="EngineID" />
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="EngineID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PistonRings">
+          <Key>
+            <PropertyRef Name="PistonRingsID" />
+          </Key>
+          <Property Name="PistonRingsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PistonRingsManufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PistonRingsHPRating" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pistons">
+          <Key>
+            <PropertyRef Name="PistonsID" />
+          </Key>
+          <Property Name="PistonsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PistonsManufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PistonsHPRating" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transmission">
+          <Key>
+            <PropertyRef Name="TransmissionID" />
+          </Key>
+          <Property Name="TransmissionID" Type="int" Nullable="false" />
+          <Property Name="TransmitionManufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TransmissionType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Turbo">
+          <Key>
+            <PropertyRef Name="TurboID" />
+          </Key>
+          <Property Name="TurboID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TurboManufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PSIRating" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TurboSize" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Engine/CamShaft_CamShaft">
+          <End Role="CamShaft" Type="Self.CamShaft" Multiplicity="1" />
+          <End Role="Engine/CamShaft" Type="Self.Engine/CamShaft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CamShaft">
+              <PropertyRef Name="CamShaftID" />
+            </Principal>
+            <Dependent Role="Engine/CamShaft">
+              <PropertyRef Name="CamShaftID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/CamShaft_Engine">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="1" />
+          <End Role="Engine/CamShaft" Type="Self.Engine/CamShaft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engine">
+              <PropertyRef Name="EngineID" />
+            </Principal>
+            <Dependent Role="Engine/CamShaft">
+              <PropertyRef Name="EngineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/PistonRings_Engine">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="1" />
+          <End Role="Engine/PistonRings" Type="Self.Engine/PistonRings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engine">
+              <PropertyRef Name="EngineID" />
+            </Principal>
+            <Dependent Role="Engine/PistonRings">
+              <PropertyRef Name="EngineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/PistonRings_Engine1">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="1" />
+          <End Role="Engine/PistonRings" Type="Self.Engine/PistonRings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engine">
+              <PropertyRef Name="EngineID" />
+            </Principal>
+            <Dependent Role="Engine/PistonRings">
+              <PropertyRef Name="EngineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/PistonRings_PistonRings">
+          <End Role="PistonRings" Type="Self.PistonRings" Multiplicity="1" />
+          <End Role="Engine/PistonRings" Type="Self.Engine/PistonRings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PistonRings">
+              <PropertyRef Name="PistonRingsID" />
+            </Principal>
+            <Dependent Role="Engine/PistonRings">
+              <PropertyRef Name="PistonRingsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/Pistons_Engine">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="1" />
+          <End Role="Engine/Pistons" Type="Self.Engine/Pistons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engine">
+              <PropertyRef Name="EngineID" />
+            </Principal>
+            <Dependent Role="Engine/Pistons">
+              <PropertyRef Name="EngineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/Pistons_Pistons">
+          <End Role="Pistons" Type="Self.Pistons" Multiplicity="1" />
+          <End Role="Engine/Pistons" Type="Self.Engine/Pistons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pistons">
+              <PropertyRef Name="PistonsID" />
+            </Principal>
+            <Dependent Role="Engine/Pistons">
+              <PropertyRef Name="PistonsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/Transmission_Engine">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="1" />
+          <End Role="Engine/Transmission" Type="Self.Engine/Transmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engine">
+              <PropertyRef Name="EngineID" />
+            </Principal>
+            <Dependent Role="Engine/Transmission">
+              <PropertyRef Name="EngineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/Transmission_Transmission">
+          <End Role="Transmission" Type="Self.Transmission" Multiplicity="1" />
+          <End Role="Engine/Transmission" Type="Self.Engine/Transmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transmission">
+              <PropertyRef Name="TransmissionID" />
+            </Principal>
+            <Dependent Role="Engine/Transmission">
+              <PropertyRef Name="TransmissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/Turbo_Engine">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="1" />
+          <End Role="Engine/Turbo" Type="Self.Engine/Turbo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engine">
+              <PropertyRef Name="EngineID" />
+            </Principal>
+            <Dependent Role="Engine/Turbo">
+              <PropertyRef Name="EngineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine/Turbo_Turbo">
+          <End Role="Turbo" Type="Self.Turbo" Multiplicity="1" />
+          <End Role="Engine/Turbo" Type="Self.Engine/Turbo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turbo">
+              <PropertyRef Name="TurboID" />
+            </Principal>
+            <Dependent Role="Engine/Turbo">
+              <PropertyRef Name="TurboID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Make/Model_Make">
+          <End Role="Make" Type="Self.Make" Multiplicity="1" />
+          <End Role="Make/Model" Type="Self.Make/Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Make">
+              <PropertyRef Name="MakeID" />
+            </Principal>
+            <Dependent Role="Make/Model">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Make/Model_Model">
+          <End Role="Model" Type="Self.Model" Multiplicity="1" />
+          <End Role="Make/Model" Type="Self.Make/Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="Make/Model">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_manufacturer/make_Make">
+          <End Role="Make" Type="Self.Make" Multiplicity="1" />
+          <End Role="manufacturer/make" Type="Self.manufacturer/make" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Make">
+              <PropertyRef Name="MakeID" />
+            </Principal>
+            <Dependent Role="manufacturer/make">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_manufacturer/make_manufacturer">
+          <End Role="manufacturer" Type="Self.manufacturer" Multiplicity="1" />
+          <End Role="manufacturer/make" Type="Self.manufacturer/make" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="manufacturer">
+              <PropertyRef Name="manufacturerID" />
+            </Principal>
+            <Dependent Role="manufacturer/make">
+              <PropertyRef Name="manufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model/Engine_Engine">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="1" />
+          <End Role="Model/Engine" Type="Self.Model/Engine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engine">
+              <PropertyRef Name="EngineID" />
+            </Principal>
+            <Dependent Role="Model/Engine">
+              <PropertyRef Name="EngineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model/Engine_Model">
+          <End Role="Model" Type="Self.Model" Multiplicity="1" />
+          <End Role="Model/Engine" Type="Self.Model/Engine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="Model/Engine">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CamShaft" EntityType="Self.CamShaft" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engine" EntityType="Self.Engine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engine/CamShaft" EntityType="Self.Engine/CamShaft" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engine/PistonRings" EntityType="Self.Engine/PistonRings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engine/Pistons" EntityType="Self.Engine/Pistons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engine/Transmission" EntityType="Self.Engine/Transmission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engine/Turbo" EntityType="Self.Engine/Turbo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Make" EntityType="Self.Make" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Make/Model" EntityType="Self.Make/Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="manufacturer" EntityType="Self.manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="manufacturer/make" EntityType="Self.manufacturer/make" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model/Engine" EntityType="Self.Model/Engine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PistonRings" EntityType="Self.PistonRings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pistons" EntityType="Self.Pistons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transmission" EntityType="Self.Transmission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turbo" EntityType="Self.Turbo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Engine/CamShaft_CamShaft" Association="Self.FK_Engine/CamShaft_CamShaft">
+            <End Role="CamShaft" EntitySet="CamShaft" />
+            <End Role="Engine/CamShaft" EntitySet="Engine/CamShaft" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/CamShaft_Engine" Association="Self.FK_Engine/CamShaft_Engine">
+            <End Role="Engine" EntitySet="Engine" />
+            <End Role="Engine/CamShaft" EntitySet="Engine/CamShaft" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/PistonRings_Engine" Association="Self.FK_Engine/PistonRings_Engine">
+            <End Role="Engine" EntitySet="Engine" />
+            <End Role="Engine/PistonRings" EntitySet="Engine/PistonRings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/PistonRings_Engine1" Association="Self.FK_Engine/PistonRings_Engine1">
+            <End Role="Engine" EntitySet="Engine" />
+            <End Role="Engine/PistonRings" EntitySet="Engine/PistonRings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/PistonRings_PistonRings" Association="Self.FK_Engine/PistonRings_PistonRings">
+            <End Role="PistonRings" EntitySet="PistonRings" />
+            <End Role="Engine/PistonRings" EntitySet="Engine/PistonRings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/Pistons_Engine" Association="Self.FK_Engine/Pistons_Engine">
+            <End Role="Engine" EntitySet="Engine" />
+            <End Role="Engine/Pistons" EntitySet="Engine/Pistons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/Pistons_Pistons" Association="Self.FK_Engine/Pistons_Pistons">
+            <End Role="Pistons" EntitySet="Pistons" />
+            <End Role="Engine/Pistons" EntitySet="Engine/Pistons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/Transmission_Engine" Association="Self.FK_Engine/Transmission_Engine">
+            <End Role="Engine" EntitySet="Engine" />
+            <End Role="Engine/Transmission" EntitySet="Engine/Transmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/Transmission_Transmission" Association="Self.FK_Engine/Transmission_Transmission">
+            <End Role="Transmission" EntitySet="Transmission" />
+            <End Role="Engine/Transmission" EntitySet="Engine/Transmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/Turbo_Engine" Association="Self.FK_Engine/Turbo_Engine">
+            <End Role="Engine" EntitySet="Engine" />
+            <End Role="Engine/Turbo" EntitySet="Engine/Turbo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine/Turbo_Turbo" Association="Self.FK_Engine/Turbo_Turbo">
+            <End Role="Turbo" EntitySet="Turbo" />
+            <End Role="Engine/Turbo" EntitySet="Engine/Turbo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Make/Model_Make" Association="Self.FK_Make/Model_Make">
+            <End Role="Make" EntitySet="Make" />
+            <End Role="Make/Model" EntitySet="Make/Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Make/Model_Model" Association="Self.FK_Make/Model_Model">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="Make/Model" EntitySet="Make/Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_manufacturer/make_Make" Association="Self.FK_manufacturer/make_Make">
+            <End Role="Make" EntitySet="Make" />
+            <End Role="manufacturer/make" EntitySet="manufacturer/make" />
+          </AssociationSet>
+          <AssociationSet Name="FK_manufacturer/make_manufacturer" Association="Self.FK_manufacturer/make_manufacturer">
+            <End Role="manufacturer" EntitySet="manufacturer" />
+            <End Role="manufacturer/make" EntitySet="manufacturer/make" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model/Engine_Engine" Association="Self.FK_Model/Engine_Engine">
+            <End Role="Engine" EntitySet="Engine" />
+            <End Role="Model/Engine" EntitySet="Model/Engine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model/Engine_Model" Association="Self.FK_Model/Engine_Model">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="Model/Engine" EntitySet="Model/Engine" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CamShaft">
+          <Key>
+            <PropertyRef Name="CamShaftID" />
+          </Key>
+          <Property Name="CamShaftID" Type="Int32" Nullable="false" />
+          <Property Name="CamShaftManufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CamShaftHPRating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Engines" Relationship="Self.Engine_CamShaft" FromRole="CamShaft" ToRole="Engine" />
+        </EntityType>
+        <EntityType Name="Engine">
+          <Key>
+            <PropertyRef Name="EngineID" />
+          </Key>
+          <Property Name="EngineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EngineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EngineHP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EngineTorque" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Engine_PistonRings" Relationship="Self.FK_Engine_PistonRings_Engine" FromRole="Engine" ToRole="Engine_PistonRings" />
+          <NavigationProperty Name="Engine_PistonRings1" Relationship="Self.FK_Engine_PistonRings_Engine1" FromRole="Engine" ToRole="Engine_PistonRings" />
+          <NavigationProperty Name="CamShafts" Relationship="Self.Engine_CamShaft" FromRole="Engine" ToRole="CamShaft" />
+          <NavigationProperty Name="Pistons" Relationship="Self.Engine_Pistons" FromRole="Engine" ToRole="Pistons" />
+          <NavigationProperty Name="Transmissions" Relationship="Self.Engine_Transmission" FromRole="Engine" ToRole="Transmission" />
+          <NavigationProperty Name="Turboes" Relationship="Self.Engine_Turbo" FromRole="Engine" ToRole="Turbo" />
+          <NavigationProperty Name="Models" Relationship="Self.Model_Engine" FromRole="Engine" ToRole="Model" />
+        </EntityType>
+        <EntityType Name="Engine_PistonRings">
+          <Key>
+            <PropertyRef Name="EngineID" />
+            <PropertyRef Name="PistonRingsID" />
+          </Key>
+          <Property Name="EngineID" Type="Int32" Nullable="false" />
+          <Property Name="PistonRingsID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Engine" Relationship="Self.FK_Engine_PistonRings_Engine" FromRole="Engine_PistonRings" ToRole="Engine" />
+          <NavigationProperty Name="Engine1" Relationship="Self.FK_Engine_PistonRings_Engine1" FromRole="Engine_PistonRings" ToRole="Engine" />
+          <NavigationProperty Name="PistonRing" Relationship="Self.FK_Engine_PistonRings_PistonRings" FromRole="Engine_PistonRings" ToRole="PistonRings" />
+        </EntityType>
+        <EntityType Name="Make">
+          <Key>
+            <PropertyRef Name="MakeID" />
+          </Key>
+          <Property Name="MakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MakeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MakeYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Models" Relationship="Self.Make_Model" FromRole="Make" ToRole="Model" />
+          <NavigationProperty Name="manufacturers" Relationship="Self.manufacturer_make" FromRole="Make" ToRole="manufacturer" />
+        </EntityType>
+        <EntityType Name="manufacturer">
+          <Key>
+            <PropertyRef Name="manufacturerID" />
+          </Key>
+          <Property Name="manufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="manufacturerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Makes" Relationship="Self.manufacturer_make" FromRole="manufacturer" ToRole="Make" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Makes" Relationship="Self.Make_Model" FromRole="Model" ToRole="Make" />
+          <NavigationProperty Name="Engines" Relationship="Self.Model_Engine" FromRole="Model" ToRole="Engine" />
+        </EntityType>
+        <EntityType Name="PistonRing">
+          <Key>
+            <PropertyRef Name="PistonRingsID" />
+          </Key>
+          <Property Name="PistonRingsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PistonRingsManufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PistonRingsHPRating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Engine_PistonRings" Relationship="Self.FK_Engine_PistonRings_PistonRings" FromRole="PistonRings" ToRole="Engine_PistonRings" />
+        </EntityType>
+        <EntityType Name="Piston">
+          <Key>
+            <PropertyRef Name="PistonsID" />
+          </Key>
+          <Property Name="PistonsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PistonsManufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PistonsHPRating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Engines" Relationship="Self.Engine_Pistons" FromRole="Pistons" ToRole="Engine" />
+        </EntityType>
+        <EntityType Name="Transmission">
+          <Key>
+            <PropertyRef Name="TransmissionID" />
+          </Key>
+          <Property Name="TransmissionID" Type="Int32" Nullable="false" />
+          <Property Name="TransmitionManufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TransmissionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Engines" Relationship="Self.Engine_Transmission" FromRole="Transmission" ToRole="Engine" />
+        </EntityType>
+        <EntityType Name="Turbo">
+          <Key>
+            <PropertyRef Name="TurboID" />
+          </Key>
+          <Property Name="TurboID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TurboManufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PSIRating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TurboSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Engines" Relationship="Self.Engine_Turbo" FromRole="Turbo" ToRole="Engine" />
+        </EntityType>
+        <Association Name="FK_Engine_PistonRings_Engine">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="1" />
+          <End Role="Engine_PistonRings" Type="Self.Engine_PistonRings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engine">
+              <PropertyRef Name="EngineID" />
+            </Principal>
+            <Dependent Role="Engine_PistonRings">
+              <PropertyRef Name="EngineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine_PistonRings_Engine1">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="1" />
+          <End Role="Engine_PistonRings" Type="Self.Engine_PistonRings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engine">
+              <PropertyRef Name="EngineID" />
+            </Principal>
+            <Dependent Role="Engine_PistonRings">
+              <PropertyRef Name="EngineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Engine_PistonRings_PistonRings">
+          <End Role="PistonRings" Type="Self.PistonRing" Multiplicity="1" />
+          <End Role="Engine_PistonRings" Type="Self.Engine_PistonRings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PistonRings">
+              <PropertyRef Name="PistonRingsID" />
+            </Principal>
+            <Dependent Role="Engine_PistonRings">
+              <PropertyRef Name="PistonRingsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Engine_CamShaft">
+          <End Role="CamShaft" Type="Self.CamShaft" Multiplicity="*" />
+          <End Role="Engine" Type="Self.Engine" Multiplicity="*" />
+        </Association>
+        <Association Name="Engine_Pistons">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="*" />
+          <End Role="Pistons" Type="Self.Piston" Multiplicity="*" />
+        </Association>
+        <Association Name="Engine_Transmission">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="*" />
+          <End Role="Transmission" Type="Self.Transmission" Multiplicity="*" />
+        </Association>
+        <Association Name="Engine_Turbo">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="*" />
+          <End Role="Turbo" Type="Self.Turbo" Multiplicity="*" />
+        </Association>
+        <Association Name="Make_Model">
+          <End Role="Make" Type="Self.Make" Multiplicity="*" />
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+        </Association>
+        <Association Name="manufacturer_make">
+          <End Role="Make" Type="Self.Make" Multiplicity="*" />
+          <End Role="manufacturer" Type="Self.manufacturer" Multiplicity="*" />
+        </Association>
+        <Association Name="Model_Engine">
+          <End Role="Engine" Type="Self.Engine" Multiplicity="*" />
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Final_ProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CamShafts" EntityType="Self.CamShaft" />
+          <EntitySet Name="Engines" EntityType="Self.Engine" />
+          <EntitySet Name="Engine_PistonRings" EntityType="Self.Engine_PistonRings" />
+          <EntitySet Name="Makes" EntityType="Self.Make" />
+          <EntitySet Name="manufacturers" EntityType="Self.manufacturer" />
+          <EntitySet Name="Models" EntityType="Self.Model" />
+          <EntitySet Name="PistonRings" EntityType="Self.PistonRing" />
+          <EntitySet Name="Pistons" EntityType="Self.Piston" />
+          <EntitySet Name="Transmissions" EntityType="Self.Transmission" />
+          <EntitySet Name="Turboes" EntityType="Self.Turbo" />
+          <AssociationSet Name="FK_Engine_PistonRings_Engine" Association="Self.FK_Engine_PistonRings_Engine">
+            <End Role="Engine" EntitySet="Engines" />
+            <End Role="Engine_PistonRings" EntitySet="Engine_PistonRings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine_PistonRings_Engine1" Association="Self.FK_Engine_PistonRings_Engine1">
+            <End Role="Engine" EntitySet="Engines" />
+            <End Role="Engine_PistonRings" EntitySet="Engine_PistonRings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Engine_PistonRings_PistonRings" Association="Self.FK_Engine_PistonRings_PistonRings">
+            <End Role="PistonRings" EntitySet="PistonRings" />
+            <End Role="Engine_PistonRings" EntitySet="Engine_PistonRings" />
+          </AssociationSet>
+          <AssociationSet Name="Engine_CamShaft" Association="Self.Engine_CamShaft">
+            <End Role="CamShaft" EntitySet="CamShafts" />
+            <End Role="Engine" EntitySet="Engines" />
+          </AssociationSet>
+          <AssociationSet Name="Engine_Pistons" Association="Self.Engine_Pistons">
+            <End Role="Engine" EntitySet="Engines" />
+            <End Role="Pistons" EntitySet="Pistons" />
+          </AssociationSet>
+          <AssociationSet Name="Engine_Transmission" Association="Self.Engine_Transmission">
+            <End Role="Engine" EntitySet="Engines" />
+            <End Role="Transmission" EntitySet="Transmissions" />
+          </AssociationSet>
+          <AssociationSet Name="Engine_Turbo" Association="Self.Engine_Turbo">
+            <End Role="Engine" EntitySet="Engines" />
+            <End Role="Turbo" EntitySet="Turboes" />
+          </AssociationSet>
+          <AssociationSet Name="Make_Model" Association="Self.Make_Model">
+            <End Role="Make" EntitySet="Makes" />
+            <End Role="Model" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="manufacturer_make" Association="Self.manufacturer_make">
+            <End Role="Make" EntitySet="Makes" />
+            <End Role="manufacturer" EntitySet="manufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="Model_Engine" Association="Self.Model_Engine">
+            <End Role="Engine" EntitySet="Engines" />
+            <End Role="Model" EntitySet="Models" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Final_ProjectEntities">
+          <EntitySetMapping Name="CamShafts">
+            <EntityTypeMapping TypeName="Model.CamShaft">
+              <MappingFragment StoreEntitySet="CamShaft">
+                <ScalarProperty Name="CamShaftID" ColumnName="CamShaftID" />
+                <ScalarProperty Name="CamShaftManufacturer" ColumnName="CamShaftManufacturer" />
+                <ScalarProperty Name="CamShaftHPRating" ColumnName="CamShaftHPRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Engines">
+            <EntityTypeMapping TypeName="Model.Engine">
+              <MappingFragment StoreEntitySet="Engine">
+                <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+                <ScalarProperty Name="EngineName" ColumnName="EngineName" />
+                <ScalarProperty Name="EngineHP" ColumnName="EngineHP" />
+                <ScalarProperty Name="EngineTorque" ColumnName="EngineTorque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Engine_PistonRings">
+            <EntityTypeMapping TypeName="Model.Engine_PistonRings">
+              <MappingFragment StoreEntitySet="Engine/PistonRings">
+                <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+                <ScalarProperty Name="PistonRingsID" ColumnName="PistonRingsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Makes">
+            <EntityTypeMapping TypeName="Model.Make">
+              <MappingFragment StoreEntitySet="Make">
+                <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+                <ScalarProperty Name="MakeName" ColumnName="MakeName" />
+                <ScalarProperty Name="MakeYear" ColumnName="MakeYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="manufacturers">
+            <EntityTypeMapping TypeName="Model.manufacturer">
+              <MappingFragment StoreEntitySet="manufacturer">
+                <ScalarProperty Name="manufacturerID" ColumnName="manufacturerID" />
+                <ScalarProperty Name="manufacturerName" ColumnName="manufacturerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="Model.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PistonRings">
+            <EntityTypeMapping TypeName="Model.PistonRing">
+              <MappingFragment StoreEntitySet="PistonRings">
+                <ScalarProperty Name="PistonRingsID" ColumnName="PistonRingsID" />
+                <ScalarProperty Name="PistonRingsManufacturer" ColumnName="PistonRingsManufacturer" />
+                <ScalarProperty Name="PistonRingsHPRating" ColumnName="PistonRingsHPRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pistons">
+            <EntityTypeMapping TypeName="Model.Piston">
+              <MappingFragment StoreEntitySet="Pistons">
+                <ScalarProperty Name="PistonsID" ColumnName="PistonsID" />
+                <ScalarProperty Name="PistonsManufacturer" ColumnName="PistonsManufacturer" />
+                <ScalarProperty Name="PistonsHPRating" ColumnName="PistonsHPRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transmissions">
+            <EntityTypeMapping TypeName="Model.Transmission">
+              <MappingFragment StoreEntitySet="Transmission">
+                <ScalarProperty Name="TransmissionID" ColumnName="TransmissionID" />
+                <ScalarProperty Name="TransmitionManufacturer" ColumnName="TransmitionManufacturer" />
+                <ScalarProperty Name="TransmissionType" ColumnName="TransmissionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turboes">
+            <EntityTypeMapping TypeName="Model.Turbo">
+              <MappingFragment StoreEntitySet="Turbo">
+                <ScalarProperty Name="TurboID" ColumnName="TurboID" />
+                <ScalarProperty Name="TurboManufacturer" ColumnName="TurboManufacturer" />
+                <ScalarProperty Name="PSIRating" ColumnName="PSIRating" />
+                <ScalarProperty Name="TurboSize" ColumnName="TurboSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Engine_CamShaft" TypeName="Model.Engine_CamShaft" StoreEntitySet="Engine/CamShaft">
+            <EndProperty Name="CamShaft">
+              <ScalarProperty Name="CamShaftID" ColumnName="CamShaftID" />
+            </EndProperty>
+            <EndProperty Name="Engine">
+              <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Engine_Pistons" TypeName="Model.Engine_Pistons" StoreEntitySet="Engine/Pistons">
+            <EndProperty Name="Engine">
+              <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+            </EndProperty>
+            <EndProperty Name="Pistons">
+              <ScalarProperty Name="PistonsID" ColumnName="PistonsID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Engine_Transmission" TypeName="Model.Engine_Transmission" StoreEntitySet="Engine/Transmission">
+            <EndProperty Name="Engine">
+              <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+            </EndProperty>
+            <EndProperty Name="Transmission">
+              <ScalarProperty Name="TransmissionID" ColumnName="TransmissionID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Engine_Turbo" TypeName="Model.Engine_Turbo" StoreEntitySet="Engine/Turbo">
+            <EndProperty Name="Engine">
+              <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+            </EndProperty>
+            <EndProperty Name="Turbo">
+              <ScalarProperty Name="TurboID" ColumnName="TurboID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Make_Model" TypeName="Model.Make_Model" StoreEntitySet="Make/Model">
+            <EndProperty Name="Make">
+              <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+            </EndProperty>
+            <EndProperty Name="Model">
+              <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="manufacturer_make" TypeName="Model.manufacturer_make" StoreEntitySet="manufacturer/make">
+            <EndProperty Name="Make">
+              <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+            </EndProperty>
+            <EndProperty Name="manufacturer">
+              <ScalarProperty Name="manufacturerID" ColumnName="manufacturerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Model_Engine" TypeName="Model.Model_Engine" StoreEntitySet="Model/Engine">
+            <EndProperty Name="Engine">
+              <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+            </EndProperty>
+            <EndProperty Name="Model">
+              <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
