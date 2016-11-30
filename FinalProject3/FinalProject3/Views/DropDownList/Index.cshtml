@@ -65,7 +65,7 @@
         $('#ddlMake').change(function () {
             $.ajax({
                 type: "post",
-                url: "/DropDownList/GetCarModel",
+                url: "/DropDownList/GetModel",
                 data: { MakeID: $('#ddlMake').val() },
                 datatype: "json",
                 traditional: true,

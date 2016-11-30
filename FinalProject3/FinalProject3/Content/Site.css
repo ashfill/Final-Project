@@ -1,6 +1,10 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url("../images/car2.jpg");
+     background-repeat:no-repeat;
+     background-size:auto;
+     color:black;
 }
 
 /* Set padding to keep content from hitting the edges */
