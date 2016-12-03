@@ -5,7 +5,9 @@
 }
 <script src="~/Scripts/jquery-3.1.1.js"></script>
 <h2>Index</h2>
-
+@using (Html.BeginForm())
+{
+<input type="submit" value="Submit" class="btn btn-default" />
 <table>
     <tr>
         <td>
@@ -32,6 +34,15 @@
 
         </td>
     </tr>
+    <tr>
+        <td>
+            <label>Engine</label>
+        </td>
+        <td id="CarModel">
+            @Html.DropDownListFor(x => x.EngineName, new List<SelectListItem>(), "--Select--", new { @id = "ddlEngine1" });
+
+        </td>
+    </tr>
 </table>
 
 <script type="text/javascript">
@@ -48,38 +59,78 @@
                     make = make + '<option value="">--Select--</option>';
                     for (var i = 0; i < data.length; i++) {
                         make = make + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                    }
+                    } 
                     make = make + '</select>';
                     $('#Make').html(make);
-                }
+                    $('#ddlMake').change(function () {
+                        $.ajax({
+                            type: "post",
+                            url: "/DropDownList/GetModel",
+                            data: { MakeID: $('#ddlMake').val() },
+                            datatype: "json",
+                            traditional: true,
+                            success: function (data) {
+                                var CModel = "<select id='ddlCarModel'>";
+                                CModel = CModel + '<option value="">--Select--</option>';
+                                for (var i = 0; i < data.length; i++) {
+                                    CModel = CModel + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                                }
+                                CModel = CModel + '</select>';
+                                $('#CarModel').html(CModel);
+                                $('#ddlCarModel').change(function () {
+                                    $.ajax({
+                                        type: "post",
+                                        url: "/DropDownList/GetEngine",
+                                        data: { CarModelID: $('#ddlCarModel').val() },
+                                        datatype: "json",
+                                        traditional: true,
+                                        success: function (data) {
+                                            var engine = "<select id='ddlEngine1'>";
+                                            engine = engine + '<option value="">--Select--</option>';
+                                            for (var i = 0; i < data.length; i++)
+                                            {
+                                                engine = engine + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                                            }
+                                            engine = engine + '</select>';
+                                            $('#Engine1').html(engine);
+                                        }
+                                    })
+                                })
+                                       }
+                                   });
+                                });
+                            }
 
-            });
-        });
-    });
+                        });
+                    });
+                });
+        
 
 </script>
 
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        $('#ddlMake').change(function () {
-            $.ajax({
-                type: "post",
-                url: "/DropDownList/GetModel",
-                data: { MakeID: $('#ddlMake').val() },
-                datatype: "json",
-                traditional: true,
-                success: function (data) {
-                    var CModel = "<select id='ddlCarModel'>";
-                    CModel = CModel + '<option value="">--Select--</option>';
-                    for (var i = 0; i < data.length; i++)
-                    {
-                        CModel = CModel + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                    }
-                    CModel = CModel + '</select>';
-                    $('#CarModel').html(CModel);
-                }
-            });
-        });
-    });
-</script>  
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            $('#ddlCarModel').change(function () {
+                                        $.ajax({
+                                            type: "post",
+                                            url: "/DropDownList/GetEngine",
+                                            data: { CarModelID: $('#ddlCarModel').val() },
+                                            datatype: "json",
+                                            traditional: true,
+                                            success: function (data) {
+                                                var engine = "<select id='ddlEngine1'>";
+                                                engine = engine + '<option value="">--Select--</option>';
+                                                for (var i = 0; i < data.length; i++)
+                                                {
+                                                    engine = engine + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                                                }
+                                                engine = engine + '</select>';
+                                                $('#Engine1').html(engine);
+                                            }
+                                        })
+                                    })
+                                           }
+                                       });
+                                    });
+    </script>*@
+} 

@@ -23,6 +23,32 @@ namespace FinalProject3.Controllers
             ClassModel.ManufacturerName = manufacturerName;
             return View(ClassModel);
         }
+        //public ActionResult GetInfo()
+        //{
+        //    Names Cool = new Names();
+
+        //    FinalProject2Entities db = new FinalProject2Entities();
+        //    Cool.CarModel = db.CarModels.ToList();
+        //    Cool.Engine = db.Engine1.ToList();
+        //    Cool.Make = db.Makes.ToList();
+        //    Cool.Manufacturer = db.Manufacturers.ToList();
+        //    return View(Cool);
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult GetInfo(FormCollection form)
+        //{
+        //    string car = form["CarModel"].ToString();
+        //    string Eng = form["Engine1"].ToString();
+        //    string Mak = form["Make"].ToString();
+        //    string man = form["Manufacturer"].ToString();
+        //    return RedirectToAction("GetInfo", new { cor = car, rng = Eng, rak = Mak, nan = man });
+        //}
+        //public ActionResult GetCar(string cor, string rng, string rak, string nan)
+        //{
+        //    Names Cool = new Models.Names();
+
+        //}
         [HttpPost]
         public ActionResult GetMake(string manufacturerID)
         {
@@ -40,6 +66,7 @@ namespace FinalProject3.Controllers
             }
             return Json(makeNames, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
         public ActionResult GetModel(string makeID)
         {
             int makID;
@@ -55,6 +82,23 @@ namespace FinalProject3.Controllers
 
             }
             return Json(CarNames, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult GetEngine(string CarModelID)
+        {
+            int CMID;
+            List<SelectListItem> EngineNames = new List<SelectListItem>();
+            if (!string.IsNullOrEmpty(CarModelID))
+            {
+                CMID = Convert.ToInt32(CarModelID);
+                List<Engine1> Engines = db.Engine1.Where(x => x.CarModelID == CMID).ToList();
+                Engines.ForEach(x =>
+                {
+                    EngineNames.Add(new SelectListItem { Text = x.EngineName, Value = x.EngineID.ToString() });
+                });
+
+            }
+            return Json(EngineNames, JsonRequestBehavior.AllowGet);
         }
     }
 }
