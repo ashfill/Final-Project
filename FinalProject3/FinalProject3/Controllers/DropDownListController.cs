@@ -100,5 +100,39 @@ namespace FinalProject3.Controllers
             }
             return Json(EngineNames, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public ActionResult GetTransmission(string EngineID)
+        {
+            int ENID;
+            List<SelectListItem> TransNames = new List<SelectListItem>();
+            if (!string.IsNullOrEmpty(EngineID))
+            {
+                ENID = Convert.ToInt32(EngineID);
+                List<transmission> Tans = db.transmissions.Where(x => x.EngineID == ENID).ToList();
+                Tans.ForEach(x =>
+                {
+                    TransNames.Add(new SelectListItem { Text = x.TransmissionName, Value = x.TransmissionID.ToString() });
+                });
+
+            }
+            return Json(TransNames, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult GetTurbo(string EngineID)
+        {
+            int ENID;
+            List<SelectListItem> TurboNames = new List<SelectListItem>();
+            if (!string.IsNullOrEmpty(EngineID))
+            {
+                ENID = Convert.ToInt32(EngineID);
+                List<turbo> Turs = db.turboes.Where(x => x.EngineID == ENID).ToList();
+                Turs.ForEach(x =>
+                {
+                    TurboNames.Add(new SelectListItem { Text = x.TurboName, Value = x.TurboID.ToString() });
+                });
+
+            }
+            return Json(TurboNames, JsonRequestBehavior.AllowGet);
+        }
     }
 }

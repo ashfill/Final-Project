@@ -38,8 +38,26 @@
         <td>
             <label>Engine</label>
         </td>
-        <td id="CarModel">
+        <td id="Engine1">
             @Html.DropDownListFor(x => x.EngineName, new List<SelectListItem>(), "--Select--", new { @id = "ddlEngine1" });
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Transmission</label>
+        </td>
+        <td id="Transmissions">
+            @Html.DropDownListFor(x => x.TransmissionName, new List<SelectListItem>(), "--Select--", new { @id = "ddlTransmissions" });
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Turbo</label>
+        </td>
+        <td id="Turboes">
+            @Html.DropDownListFor(x => x.TurboName, new List<SelectListItem>(), "--Select--", new { @id = "ddlTurboes" });
 
         </td>
     </tr>
@@ -62,6 +80,7 @@
                     } 
                     make = make + '</select>';
                     $('#Make').html(make);
+                    
                     $('#ddlMake').change(function () {
                         $.ajax({
                             type: "post",
@@ -77,6 +96,7 @@
                                 }
                                 CModel = CModel + '</select>';
                                 $('#CarModel').html(CModel);
+                                
                                 $('#ddlCarModel').change(function () {
                                     $.ajax({
                                         type: "post",
@@ -87,12 +107,49 @@
                                         success: function (data) {
                                             var engine = "<select id='ddlEngine1'>";
                                             engine = engine + '<option value="">--Select--</option>';
-                                            for (var i = 0; i < data.length; i++)
-                                            {
+                                            for (var i = 0; i < data.length; i++) {
                                                 engine = engine + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
                                             }
                                             engine = engine + '</select>';
                                             $('#Engine1').html(engine);
+
+                                            $('#ddlEngine1').change(function () {
+                                                $.ajax({
+                                                    type: "post",
+                                                    url: "/DropDownList/GetTransmission",
+                                                    data: { EngineID: $('#ddlEngine1').val() },
+                                                    datatype: "json",
+                                                    traditional: true,
+                                                    success: function (data) {
+                                                        var trans = "<select id='ddlTransmissions'>";
+                                                        trans = trans + '<option value="">--Select--</option>';
+                                                        for (var i = 0; i < data.length; i++) {
+                                                            trans = trans + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                                                        }
+                                                        trans = trans + '</select>';
+                                                        $('#Transmissions').html(trans);
+                                                    }
+                                                })
+                                            })
+                                        ('#ddlTransmissions').change(function () {
+                                            $.ajax({
+                                                type: "post",
+                                                url: "/DropDownList/GetTurbo",
+                                                data: { EngineID: $('#ddlEngine1').val() },
+                                                datatype: "json",
+                                                traditional: true,
+                                                success: function (data) {
+                                                    var turbs = "<select id='ddlTurboes'>";
+                                                    turbs = turbs + '<option value="">--Select--</option>';
+                                                    for (var i = 0; i < data.length; i++) {
+                                                        turbs = turbs + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                                                    }
+                                                    turbs = turbs + '</select>';
+                                                    $('#Turboes').html(turbs);
+                                                }
+                                            })
+                                        })
+                                    
                                         }
                                     })
                                 })
