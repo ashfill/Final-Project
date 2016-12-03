@@ -134,5 +134,25 @@ namespace FinalProject3.Controllers
             }
             return Json(TurboNames, JsonRequestBehavior.AllowGet);
         }
+        //public ActionResult GetInfo()
+        //{
+        //    Names Cool = new Names();
+
+        //    Cool.CarModelName = db.CarModels.ToList();
+        //    Cool.EngineName = db.Engine1.ToList();
+        //    Cool.MakeName = db.Makes.ToList();
+        //    Cool.ManufacturerName = db.Manufacturers.ToList();
+        //    return View(Cool);
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult GetInfo(FormCollection form)
+        //{
+        //    string car = form["CarModel"].ToString();
+        //    string Eng = form["Engine1"].ToString();
+        //    string Mak = form["Make"].ToString();
+        //    string man = form["Manufacturer"].ToString();
+        //    return RedirectToAction("Index", new { cor = car, rng = Eng, rak = Mak, nan = man });
+        //}
     }
 }

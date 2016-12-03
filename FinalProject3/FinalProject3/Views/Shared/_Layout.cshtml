@@ -18,16 +18,25 @@
                         <span class="icon-bar"></span>
                         <script src="~/Scripts/jquery-3.1.1.js"></script>
                     </button>
+                    <div class="navbar-collapse collapse"></div>
+                    <ul class="nav navbar-nav">
+                        <li> @Html.ActionLink("BuildACar", "Index", "Home")</li>
+                    </ul>
                     <div class="dropdown">
-                        <a class="dropbtn">Options</a>
+                        <a class="dropbtn">Add your own</a>
                         <div class="dropdown-content">
-                            <a href="#">@Html.ActionLink("Home", "Index", "Home")</a>
                             <a href="#">@Html.ActionLink("Manufacturer", "Index", "Manufacturers")</a>
                             <a href="#">@Html.ActionLink("Make", "Index", "Makes")</a>
                             <a href="#">@Html.ActionLink("Model", "Index", "CarModels")</a>
                             <a href="#">@Html.ActionLink("Engine", "Index", "Engine1")</a>
                             <a href="#">@Html.ActionLink("Transmission", "Index", "Transmissions")</a>
                             <a href="#">@Html.ActionLink("Turbo", "Index", "Turboes")</a>
+                        </div>
+
+                    </div>
+                    <div class="dropdown">
+                        <a class="dropbtn">Build you car</a>
+                        <div class="dropdown-content">
                             <a href="#">@Html.ActionLink("Selection", "Index", "DropDownList")</a>
                         </div>
                     </div>
