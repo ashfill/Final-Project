@@ -198,6 +198,9 @@
     </Compile>
     <Compile Include="Models\Names.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TotalAmount.cs">
+      <DependentUpon>Cars.tt</DependentUpon>
+    </Compile>
     <Compile Include="transmission.cs">
       <DependentUpon>Cars.tt</DependentUpon>
     </Compile>

@@ -12,16 +12,14 @@ namespace FinalProject3
     using System;
     using System.Collections.Generic;
     
-    public partial class transmission
+    public partial class TotalAmount
     {
+        public int ManufacturerID { get; set; }
+        public int MakeID { get; set; }
+        public int CarModelID { get; set; }
+        public int Engine1ID { get; set; }
         public int TransmissionID { get; set; }
-        public string TransmissionName { get; set; }
-        public string TransmissionType { get; set; }
         public int TurboID { get; set; }
-        public string Price { get; set; }
-        public Nullable<int> EngineID { get; set; }
-    
-        public virtual Engine1 Engine1 { get; set; }
-        public virtual turbo turbo { get; set; }
+        public decimal Price { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FinalProject2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FinalProject2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CarModel">
           <Key>
             <PropertyRef Name="CarModelID" />
@@ -12,6 +12,7 @@
           <Property Name="CarModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CarModelName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="MakeID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Engine1">
           <Key>
@@ -22,6 +23,7 @@
           <Property Name="EngineHPRating" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EngineTorque" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CarModelID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Make">
           <Key>
@@ -30,6 +32,7 @@
           <Property Name="MakeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MakeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ManufacturerID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -37,6 +40,25 @@
           </Key>
           <Property Name="ManufactuerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ManufactuerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TotalAmount">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+            <PropertyRef Name="MakeID" />
+            <PropertyRef Name="CarModelID" />
+            <PropertyRef Name="Engine1ID" />
+            <PropertyRef Name="TransmissionID" />
+            <PropertyRef Name="TurboID" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="ManufacturerID" Type="int" Nullable="false" />
+          <Property Name="MakeID" Type="int" Nullable="false" />
+          <Property Name="CarModelID" Type="int" Nullable="false" />
+          <Property Name="Engine1ID" Type="int" Nullable="false" />
+          <Property Name="TransmissionID" Type="int" Nullable="false" />
+          <Property Name="TurboID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="transmission">
           <Key>
@@ -45,17 +67,20 @@
           <Property Name="TransmissionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TransmissionName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TransmissionType" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="EngineID" Type="int" Nullable="false" />
+          <Property Name="TurboID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
+          <Property Name="EngineID" Type="int" />
         </EntityType>
         <EntityType Name="turbo">
           <Key>
             <PropertyRef Name="TurboID" />
           </Key>
           <Property Name="TurboID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TurboName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TurboHPRating" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TurboTurbineSize" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="EngineID" Type="int" Nullable="false" />
+          <Property Name="TurboName" Type="varchar" MaxLength="50" />
+          <Property Name="TurboHPRating" Type="varchar" MaxLength="50" />
+          <Property Name="TurboTurbineSize" Type="varchar" MaxLength="50" />
+          <Property Name="TransmissionID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_CarModel_Make">
           <End Role="Make" Type="Self.Make" Multiplicity="1" />
@@ -69,7 +94,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Engine1_CarModel">
+        <Association Name="FK_Engine1_CarModel1">
           <End Role="CarModel" Type="Self.CarModel" Multiplicity="1" />
           <End Role="Engine1" Type="Self.Engine1" Multiplicity="*" />
           <ReferentialConstraint>
@@ -93,8 +118,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_transmission_Engine1">
-          <End Role="Engine1" Type="Self.Engine1" Multiplicity="1" />
+        <Association Name="FK_transmission_Engine11">
+          <End Role="Engine1" Type="Self.Engine1" Multiplicity="0..1" />
           <End Role="transmission" Type="Self.transmission" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Engine1">
@@ -105,15 +130,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_turbo_Engine1">
-          <End Role="Engine1" Type="Self.Engine1" Multiplicity="1" />
-          <End Role="turbo" Type="Self.turbo" Multiplicity="*" />
+        <Association Name="FK_transmission_turbo">
+          <End Role="turbo" Type="Self.turbo" Multiplicity="1" />
+          <End Role="transmission" Type="Self.transmission" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Engine1">
-              <PropertyRef Name="EngineID" />
+            <Principal Role="turbo">
+              <PropertyRef Name="TurboID" />
             </Principal>
-            <Dependent Role="turbo">
-              <PropertyRef Name="EngineID" />
+            <Dependent Role="transmission">
+              <PropertyRef Name="TurboID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -122,13 +147,14 @@
           <EntitySet Name="Engine1" EntityType="Self.Engine1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Make" EntityType="Self.Make" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TotalAmount" EntityType="Self.TotalAmount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="transmission" EntityType="Self.transmission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="turbo" EntityType="Self.turbo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CarModel_Make" Association="Self.FK_CarModel_Make">
             <End Role="Make" EntitySet="Make" />
             <End Role="CarModel" EntitySet="CarModel" />
           </AssociationSet>
-          <AssociationSet Name="FK_Engine1_CarModel" Association="Self.FK_Engine1_CarModel">
+          <AssociationSet Name="FK_Engine1_CarModel1" Association="Self.FK_Engine1_CarModel1">
             <End Role="CarModel" EntitySet="CarModel" />
             <End Role="Engine1" EntitySet="Engine1" />
           </AssociationSet>
@@ -136,13 +162,13 @@
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Make" EntitySet="Make" />
           </AssociationSet>
-          <AssociationSet Name="FK_transmission_Engine1" Association="Self.FK_transmission_Engine1">
+          <AssociationSet Name="FK_transmission_Engine11" Association="Self.FK_transmission_Engine11">
             <End Role="Engine1" EntitySet="Engine1" />
             <End Role="transmission" EntitySet="transmission" />
           </AssociationSet>
-          <AssociationSet Name="FK_turbo_Engine1" Association="Self.FK_turbo_Engine1">
-            <End Role="Engine1" EntitySet="Engine1" />
+          <AssociationSet Name="FK_transmission_turbo" Association="Self.FK_transmission_turbo">
             <End Role="turbo" EntitySet="turbo" />
+            <End Role="transmission" EntitySet="transmission" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -157,8 +183,9 @@
           <Property Name="CarModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CarModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MakeID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Make" Relationship="Self.FK_CarModel_Make" FromRole="CarModel" ToRole="Make" />
-          <NavigationProperty Name="Engine1" Relationship="Self.FK_Engine1_CarModel" FromRole="CarModel" ToRole="Engine1" />
+          <NavigationProperty Name="Engine1" Relationship="Self.FK_Engine1_CarModel1" FromRole="CarModel" ToRole="Engine1" />
         </EntityType>
         <EntityType Name="Engine1">
           <Key>
@@ -169,9 +196,9 @@
           <Property Name="EngineHPRating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EngineTorque" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CarModelID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CarModel" Relationship="Self.FK_Engine1_CarModel" FromRole="Engine1" ToRole="CarModel" />
-          <NavigationProperty Name="transmissions" Relationship="Self.FK_transmission_Engine1" FromRole="Engine1" ToRole="transmission" />
-          <NavigationProperty Name="turboes" Relationship="Self.FK_turbo_Engine1" FromRole="Engine1" ToRole="turbo" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CarModel" Relationship="Self.FK_Engine1_CarModel1" FromRole="Engine1" ToRole="CarModel" />
+          <NavigationProperty Name="transmissions" Relationship="Self.FK_transmission_Engine11" FromRole="Engine1" ToRole="transmission" />
         </EntityType>
         <EntityType Name="Make">
           <Key>
@@ -180,6 +207,7 @@
           <Property Name="MakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MakeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CarModels" Relationship="Self.FK_CarModel_Make" FromRole="Make" ToRole="CarModel" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Make_Manufacturer" FromRole="Make" ToRole="Manufacturer" />
         </EntityType>
@@ -189,7 +217,26 @@
           </Key>
           <Property Name="ManufactuerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ManufactuerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Makes" Relationship="Self.FK_Make_Manufacturer" FromRole="Manufacturer" ToRole="Make" />
+        </EntityType>
+        <EntityType Name="TotalAmount">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+            <PropertyRef Name="MakeID" />
+            <PropertyRef Name="CarModelID" />
+            <PropertyRef Name="Engine1ID" />
+            <PropertyRef Name="TransmissionID" />
+            <PropertyRef Name="TurboID" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+          <Property Name="MakeID" Type="Int32" Nullable="false" />
+          <Property Name="CarModelID" Type="Int32" Nullable="false" />
+          <Property Name="Engine1ID" Type="Int32" Nullable="false" />
+          <Property Name="TransmissionID" Type="Int32" Nullable="false" />
+          <Property Name="TurboID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="transmission">
           <Key>
@@ -198,19 +245,23 @@
           <Property Name="TransmissionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TransmissionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TransmissionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EngineID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Engine1" Relationship="Self.FK_transmission_Engine1" FromRole="transmission" ToRole="Engine1" />
+          <Property Name="TurboID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EngineID" Type="Int32" />
+          <NavigationProperty Name="Engine1" Relationship="Self.FK_transmission_Engine11" FromRole="transmission" ToRole="Engine1" />
+          <NavigationProperty Name="turbo" Relationship="Self.FK_transmission_turbo" FromRole="transmission" ToRole="turbo" />
         </EntityType>
         <EntityType Name="turbo">
           <Key>
             <PropertyRef Name="TurboID" />
           </Key>
           <Property Name="TurboID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TurboName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TurboHPRating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TurboTurbineSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EngineID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Engine1" Relationship="Self.FK_turbo_Engine1" FromRole="turbo" ToRole="Engine1" />
+          <Property Name="TurboName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TurboHPRating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TurboTurbineSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransmissionID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="transmissions" Relationship="Self.FK_transmission_turbo" FromRole="turbo" ToRole="transmission" />
         </EntityType>
         <Association Name="FK_CarModel_Make">
           <End Role="Make" Type="Self.Make" Multiplicity="1" />
@@ -224,7 +275,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Engine1_CarModel">
+        <Association Name="FK_Engine1_CarModel1">
           <End Role="CarModel" Type="Self.CarModel" Multiplicity="1" />
           <End Role="Engine1" Type="Self.Engine1" Multiplicity="*" />
           <ReferentialConstraint>
@@ -236,26 +287,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_transmission_Engine1">
-          <End Role="Engine1" Type="Self.Engine1" Multiplicity="1" />
+        <Association Name="FK_transmission_Engine11">
+          <End Role="Engine1" Type="Self.Engine1" Multiplicity="0..1" />
           <End Role="transmission" Type="Self.transmission" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Engine1">
               <PropertyRef Name="EngineID" />
             </Principal>
             <Dependent Role="transmission">
-              <PropertyRef Name="EngineID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_turbo_Engine1">
-          <End Role="Engine1" Type="Self.Engine1" Multiplicity="1" />
-          <End Role="turbo" Type="Self.turbo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Engine1">
-              <PropertyRef Name="EngineID" />
-            </Principal>
-            <Dependent Role="turbo">
               <PropertyRef Name="EngineID" />
             </Dependent>
           </ReferentialConstraint>
@@ -272,32 +311,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_transmission_turbo">
+          <End Role="turbo" Type="Self.turbo" Multiplicity="1" />
+          <End Role="transmission" Type="Self.transmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turbo">
+              <PropertyRef Name="TurboID" />
+            </Principal>
+            <Dependent Role="transmission">
+              <PropertyRef Name="TurboID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FinalProject2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CarModels" EntityType="Self.CarModel" />
           <EntitySet Name="Engine1" EntityType="Self.Engine1" />
           <EntitySet Name="Makes" EntityType="Self.Make" />
           <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
+          <EntitySet Name="TotalAmounts" EntityType="Self.TotalAmount" />
           <EntitySet Name="transmissions" EntityType="Self.transmission" />
           <EntitySet Name="turboes" EntityType="Self.turbo" />
           <AssociationSet Name="FK_CarModel_Make" Association="Self.FK_CarModel_Make">
             <End Role="Make" EntitySet="Makes" />
             <End Role="CarModel" EntitySet="CarModels" />
           </AssociationSet>
-          <AssociationSet Name="FK_Engine1_CarModel" Association="Self.FK_Engine1_CarModel">
+          <AssociationSet Name="FK_Engine1_CarModel1" Association="Self.FK_Engine1_CarModel1">
             <End Role="CarModel" EntitySet="CarModels" />
             <End Role="Engine1" EntitySet="Engine1" />
           </AssociationSet>
-          <AssociationSet Name="FK_transmission_Engine1" Association="Self.FK_transmission_Engine1">
+          <AssociationSet Name="FK_transmission_Engine11" Association="Self.FK_transmission_Engine11">
             <End Role="Engine1" EntitySet="Engine1" />
             <End Role="transmission" EntitySet="transmissions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_turbo_Engine1" Association="Self.FK_turbo_Engine1">
-            <End Role="Engine1" EntitySet="Engine1" />
-            <End Role="turbo" EntitySet="turboes" />
           </AssociationSet>
           <AssociationSet Name="FK_Make_Manufacturer" Association="Self.FK_Make_Manufacturer">
             <End Role="Manufacturer" EntitySet="Manufacturers" />
             <End Role="Make" EntitySet="Makes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transmission_turbo" Association="Self.FK_transmission_turbo">
+            <End Role="turbo" EntitySet="turboes" />
+            <End Role="transmission" EntitySet="transmissions" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -312,6 +364,7 @@
                 <ScalarProperty Name="CarModelID" ColumnName="CarModelID" />
                 <ScalarProperty Name="CarModelName" ColumnName="CarModelName" />
                 <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -323,6 +376,7 @@
                 <ScalarProperty Name="EngineHPRating" ColumnName="EngineHPRating" />
                 <ScalarProperty Name="EngineTorque" ColumnName="EngineTorque" />
                 <ScalarProperty Name="CarModelID" ColumnName="CarModelID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -332,6 +386,7 @@
                 <ScalarProperty Name="MakeID" ColumnName="MakeID" />
                 <ScalarProperty Name="MakeName" ColumnName="MakeName" />
                 <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -340,6 +395,20 @@
               <MappingFragment StoreEntitySet="Manufacturer">
                 <ScalarProperty Name="ManufactuerID" ColumnName="ManufactuerID" />
                 <ScalarProperty Name="ManufactuerName" ColumnName="ManufactuerName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TotalAmounts">
+            <EntityTypeMapping TypeName="FinalProject2Model.TotalAmount">
+              <MappingFragment StoreEntitySet="TotalAmount">
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+                <ScalarProperty Name="CarModelID" ColumnName="CarModelID" />
+                <ScalarProperty Name="Engine1ID" ColumnName="Engine1ID" />
+                <ScalarProperty Name="TransmissionID" ColumnName="TransmissionID" />
+                <ScalarProperty Name="TurboID" ColumnName="TurboID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -349,6 +418,8 @@
                 <ScalarProperty Name="TransmissionID" ColumnName="TransmissionID" />
                 <ScalarProperty Name="TransmissionName" ColumnName="TransmissionName" />
                 <ScalarProperty Name="TransmissionType" ColumnName="TransmissionType" />
+                <ScalarProperty Name="TurboID" ColumnName="TurboID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="EngineID" ColumnName="EngineID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -360,7 +431,8 @@
                 <ScalarProperty Name="TurboName" ColumnName="TurboName" />
                 <ScalarProperty Name="TurboHPRating" ColumnName="TurboHPRating" />
                 <ScalarProperty Name="TurboTurbineSize" ColumnName="TurboTurbineSize" />
-                <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+                <ScalarProperty Name="TransmissionID" ColumnName="TransmissionID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -380,7 +452,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

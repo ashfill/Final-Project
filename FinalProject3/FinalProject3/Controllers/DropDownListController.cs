@@ -120,12 +120,12 @@ namespace FinalProject3.Controllers
         [HttpPost]
         public ActionResult GetTurbo(string EngineID)
         {
-            int ENID;
+            int TSID;
             List<SelectListItem> TurboNames = new List<SelectListItem>();
             if (!string.IsNullOrEmpty(EngineID))
             {
-                ENID = Convert.ToInt32(EngineID);
-                List<turbo> Turs = db.turboes.Where(x => x.EngineID == ENID).ToList();
+                TSID = Convert.ToInt32(EngineID);
+                List<turbo> Turs = db.turboes.Where(x => x.TransmissionID == TSID).ToList();
                 Turs.ForEach(x =>
                 {
                     TurboNames.Add(new SelectListItem { Text = x.TurboName, Value = x.TurboID.ToString() });

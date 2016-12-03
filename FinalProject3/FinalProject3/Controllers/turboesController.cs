@@ -17,7 +17,7 @@ namespace FinalProject3.Controllers
         // GET: turboes
         public ActionResult Index()
         {
-            var turboes = db.turboes.Include(t => t.Engine1);
+            var turboes = db.turboes.Include(t => t.transmissions);
             return View(turboes.ToList());
         }
 
@@ -48,7 +48,7 @@ namespace FinalProject3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,EngineID")] turbo turbo)
+        public ActionResult Create([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,Transmission")] turbo turbo)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace FinalProject3.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EngineID = new SelectList(db.Engine1, "EngineID", "EngineName", turbo.EngineID);
+            ViewBag.TransmissionID = new SelectList(db.transmissions, "TransmissionID", "TransmissionName", turbo.TransmissionID);
             return View(turbo);
         }
 
@@ -73,7 +73,7 @@ namespace FinalProject3.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EngineID = new SelectList(db.Engine1, "EngineID", "EngineName", turbo.EngineID);
+            ViewBag.TransmissionID = new SelectList(db.transmissions, "TransmissionID", "TransmissionName", turbo.TransmissionID);
             return View(turbo);
         }
 
@@ -82,7 +82,7 @@ namespace FinalProject3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,EngineID")] turbo turbo)
+        public ActionResult Edit([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,TransmissionID")] turbo turbo)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace FinalProject3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EngineID = new SelectList(db.Engine1, "EngineID", "EngineName", turbo.EngineID);
+            ViewBag.TransmissionID = new SelectList(db.transmissions, "TransmissionID", "TransmissionName", turbo.TransmissionID);
             return View(turbo);
         }
 
