@@ -118,13 +118,13 @@ namespace FinalProject3.Controllers
             return Json(TransNames, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult GetTurbo(string EngineID)
+        public ActionResult GetTurbo(string TransmissionID)
         {
             int TSID;
             List<SelectListItem> TurboNames = new List<SelectListItem>();
-            if (!string.IsNullOrEmpty(EngineID))
+            if (!string.IsNullOrEmpty(TransmissionID))
             {
-                TSID = Convert.ToInt32(EngineID);
+                TSID = Convert.ToInt32(TransmissionID);
                 List<turbo> Turs = db.turboes.Where(x => x.TransmissionID == TSID).ToList();
                 Turs.ForEach(x =>
                 {

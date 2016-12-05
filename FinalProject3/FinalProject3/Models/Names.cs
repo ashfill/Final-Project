@@ -14,13 +14,8 @@ namespace FinalProject3.Models
         public IList<SelectListItem> ManufacturerName { get; set; }
         public IList<SelectListItem> TransmissionName { get; set; }
         public IList<SelectListItem> TurboName { get; set; }
+        public IList<SelectListItem> Price { get; set; }
     }
 }
 
 
-//        public int CarModelID { get; set; }
-//        public int EngineID { get; set; }
-//        public int MakeID { get; set; }
-//        public int ManufacturerID { get; set; }
-//    }
-//}

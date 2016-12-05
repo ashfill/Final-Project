@@ -48,7 +48,7 @@ namespace FinalProject3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CarModelID,CarModelName,MakeID")] CarModel carModel)
+        public ActionResult Create([Bind(Include = "CarModelID,CarModelName,Price,MakeID")] CarModel carModel)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace FinalProject3.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName", carModel.MakeID);
+            ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName",carModel.MakeID);
             return View(carModel);
         }
 
@@ -73,7 +73,7 @@ namespace FinalProject3.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName", carModel.MakeID);
+            ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName",carModel.MakeID);
             return View(carModel);
         }
 
@@ -82,7 +82,7 @@ namespace FinalProject3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CarModelID,CarModelName,MakeID")] CarModel carModel)
+        public ActionResult Edit([Bind(Include = "CarModelID,CarModelName,Price,MakeID")] CarModel carModel)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace FinalProject3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName", carModel.MakeID);
+            ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName",carModel.MakeID);
             return View(carModel);
         }
 

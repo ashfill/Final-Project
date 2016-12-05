@@ -23,7 +23,6 @@ namespace FinalProject3
         public int MakeID { get; set; }
         public string MakeName { get; set; }
         public int ManufacturerID { get; set; }
-        public string Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarModel> CarModels { get; set; }

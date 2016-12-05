@@ -22,7 +22,6 @@ namespace FinalProject3
     
         public int ManufactuerID { get; set; }
         public string ManufactuerName { get; set; }
-        public string Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Make> Makes { get; set; }

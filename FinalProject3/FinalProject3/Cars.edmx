@@ -32,7 +32,6 @@
           <Property Name="MakeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MakeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ManufacturerID" Type="int" Nullable="false" />
-          <Property Name="Price" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -40,7 +39,6 @@
           </Key>
           <Property Name="ManufactuerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ManufactuerName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Price" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TotalAmount">
           <Key>
@@ -207,7 +205,6 @@
           <Property Name="MakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MakeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CarModels" Relationship="Self.FK_CarModel_Make" FromRole="Make" ToRole="CarModel" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Make_Manufacturer" FromRole="Make" ToRole="Manufacturer" />
         </EntityType>
@@ -217,7 +214,6 @@
           </Key>
           <Property Name="ManufactuerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ManufactuerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Makes" Relationship="Self.FK_Make_Manufacturer" FromRole="Manufacturer" ToRole="Make" />
         </EntityType>
         <EntityType Name="TotalAmount">
@@ -386,7 +382,6 @@
                 <ScalarProperty Name="MakeID" ColumnName="MakeID" />
                 <ScalarProperty Name="MakeName" ColumnName="MakeName" />
                 <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -395,7 +390,6 @@
               <MappingFragment StoreEntitySet="Manufacturer">
                 <ScalarProperty Name="ManufactuerID" ColumnName="ManufactuerID" />
                 <ScalarProperty Name="ManufactuerName" ColumnName="ManufactuerName" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
