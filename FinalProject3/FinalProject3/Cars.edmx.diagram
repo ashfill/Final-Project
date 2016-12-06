@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="43d8dd0196a043c8b58a0da4706f7245" Name="Diagram1">
+      <Diagram DiagramId="aa4ac20c710c4f04a6abfc9f527f185d" Name="Diagram1">
         <EntityTypeShape EntityType="FinalProject2Model.CarModel" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalProject2Model.Engine1" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalProject2Model.Make" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalProject2Model.Manufacturer" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalProject2Model.TotalAmount" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalProject2Model.transmission" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.turbo" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject2Model.turbo" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="FinalProject2Model.FK_CarModel_Make" ManuallyRouted="false" />
         <AssociationConnector Association="FinalProject2Model.FK_Engine1_CarModel1" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_transmission_Engine11" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject2Model.FK_transmission_Engine1" ManuallyRouted="false" />
         <AssociationConnector Association="FinalProject2Model.FK_Make_Manufacturer" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_transmission_turbo" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject2Model.FK_turbo_transmission" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

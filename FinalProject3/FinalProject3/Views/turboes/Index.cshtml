@@ -22,7 +22,10 @@
             @Html.DisplayNameFor(model => model.TurboTurbineSize)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Engine1.EngineName)
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.transmission)
         </th>
         <th></th>
     </tr>
@@ -39,7 +42,10 @@
             @Html.DisplayFor(modelItem => item.TurboTurbineSize)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Engine1.EngineName)
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.transmission)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TurboID }) |

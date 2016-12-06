@@ -14,20 +14,13 @@ namespace FinalProject3
     
     public partial class turbo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public turbo()
-        {
-            this.transmissions = new HashSet<transmission>();
-        }
-    
         public int TurboID { get; set; }
         public string TurboName { get; set; }
         public string TurboHPRating { get; set; }
         public string TurboTurbineSize { get; set; }
-        public int TransmissionID { get; set; }
+        public Nullable<int> TransmissionID { get; set; }
         public string Price { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<transmission> transmissions { get; set; }
+        public virtual transmission transmission { get; set; }
     }
 }

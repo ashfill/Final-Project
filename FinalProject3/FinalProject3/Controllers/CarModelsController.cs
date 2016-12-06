@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using FinalProject3;
+using FinalProject3.Models;
 
 namespace FinalProject3.Controllers
 {
@@ -128,5 +128,8 @@ namespace FinalProject3.Controllers
             }
             base.Dispose(disposing);
         }
+      
+
+        }
     }
-}
+

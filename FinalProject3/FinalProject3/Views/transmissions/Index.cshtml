@@ -19,6 +19,9 @@
             @Html.DisplayNameFor(model => model.TransmissionType)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Engine1.EngineName)
         </th>
         <th></th>
@@ -31,6 +34,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TransmissionType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Engine1.EngineName)

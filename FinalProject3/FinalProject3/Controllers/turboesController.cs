@@ -17,7 +17,7 @@ namespace FinalProject3.Controllers
         // GET: turboes
         public ActionResult Index()
         {
-            var turboes = db.turboes.Include(t => t.transmissions);
+            var turboes = db.turboes.Include(t => t.transmission);
             return View(turboes.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace FinalProject3.Controllers
         // GET: turboes/Create
         public ActionResult Create()
         {
-            ViewBag.EngineID = new SelectList(db.Engine1, "EngineID", "EngineName");
+            ViewBag.TransmissionID = new SelectList(db.transmissions, "TransmissionID", "TransmissionName");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace FinalProject3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,Transmission")] turbo turbo)
+        public ActionResult Create([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,Price,Transmission")] turbo turbo)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace FinalProject3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,TransmissionID")] turbo turbo)
+        public ActionResult Edit([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,Price,TransmissionID")] turbo turbo)
         {
             if (ModelState.IsValid)
             {

@@ -48,7 +48,7 @@ namespace FinalProject3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EngineID,EngineName,EngineHPRating,EngineTorque,CarModelID")] Engine1 engine1)
+        public ActionResult Create([Bind(Include = "EngineID,EngineName,EngineHPRating,EngineTorque,Price,CarModelID")] Engine1 engine1)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace FinalProject3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EngineID,EngineName,EngineHPRating,EngineTorque,CarModelID")] Engine1 engine1)
+        public ActionResult Edit([Bind(Include = "EngineID,EngineName,EngineHPRating,EngineTorque,Price,CarModelID")] Engine1 engine1)
         {
             if (ModelState.IsValid)
             {

@@ -6,16 +6,17 @@ using System.Web.Mvc;
 
 namespace FinalProject3.Models
 {
-    public class Names
-    {
-        public IList<SelectListItem> CarModelName { get; set; }
-        public IList<SelectListItem> EngineName { get; set; }
-        public IList<SelectListItem> MakeName { get; set; }
-        public IList<SelectListItem> ManufacturerName { get; set; }
-        public IList<SelectListItem> TransmissionName { get; set; }
-        public IList<SelectListItem> TurboName { get; set; }
-        public IList<SelectListItem> Price { get; set; }
-    }
+    //public class Names
+    //{
+    //    public IList<SelectListItem> CarModelName { get; set; }
+    //    public IList<SelectListItem> EngineName { get; set; }
+    //    public IList<SelectListItem> MakeName { get; set; }
+    //    public IList<SelectListItem> ManufacturerName { get; set; }
+    //    public IList<SelectListItem> TransmissionName { get; set; }
+    //    public IList<SelectListItem> TurboName { get; set; }
+       
+        
+    //}
 }
 
 

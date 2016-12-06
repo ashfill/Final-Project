@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="Image">
+    <div class="image">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -20,7 +20,7 @@
                     </button>
                     <div class="navbar-collapse collapse"></div>
                     <ul class="nav navbar-nav">
-                        <li> @Html.ActionLink("BuildACar", "Index", "Home")</li>
+                        <li> @Html.ActionLink("Inventory", "Index", "Home")</li>
                     </ul>
                     <div class="dropdown">
                         <a class="dropbtn">Add your own</a>
@@ -35,9 +35,10 @@
 
                     </div>
                     <div class="dropdown">
-                        <a class="dropbtn">Build you car</a>
+                        <a class="dropbtn">Find Your Parts</a>
                         <div class="dropdown-content">
-                            <a href="#">@Html.ActionLink("Selection", "Index", "DropDownList")</a>
+                            <a href="#">@Html.ActionLink("Shells", "Index", "Shell")</a>
+                            <a href="#">@Html.ActionLink("Engines", "Index", "Engines")</a>
                         </div>
                     </div>
 
