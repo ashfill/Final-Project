@@ -18,10 +18,7 @@ namespace CarProject.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            //var myProperties = (from BulUser in db.TotalAmounts
-            //                    join tol in db.BuildUsers on BulUser.BuildUserID equals tol.BuildUserID
-            //                    where BulUser.BuildUserID == tol.BuildUserID && tol.BuildUserAuthKey == User.Identity.Name
-            //                    select tol).FirstOrDefault();
+           
 
             var totalAmounts = db.TotalAmounts.Include(t => t.Engine1).Include(t => t.Make).Include(t => t.Manufacturer).Include(t => t.transmission).Include(t => t.turbo);
             return View(db.TotalAmounts.ToList());
@@ -73,8 +70,8 @@ namespace CarProject.Controllers
         {
             if (ModelState.IsValid)
             {
-  
-                                   
+
+                totalAmount.BuildUser = User.Identity.Name; 
 
                 db.TotalAmounts.Add(totalAmount);
                 db.SaveChanges();
