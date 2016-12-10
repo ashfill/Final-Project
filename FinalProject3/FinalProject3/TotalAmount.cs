@@ -21,5 +21,12 @@ namespace FinalProject3
         public int TransmissionID { get; set; }
         public int TurboID { get; set; }
         public decimal Price { get; set; }
+    
+        public virtual CarModel CarModel { get; set; }
+        public virtual Engine1 Engine1 { get; set; }
+        public virtual Make Make { get; set; }
+        public virtual Manufacturer Manufacturer { get; set; }
+        public virtual transmission transmission { get; set; }
+        public virtual turbo turbo { get; set; }
     }
 }

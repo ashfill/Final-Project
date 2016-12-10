@@ -18,6 +18,7 @@ namespace FinalProject3
         public CarModel()
         {
             this.Engine1 = new HashSet<Engine1>();
+            this.TotalAmounts = new HashSet<TotalAmount>();
         }
     
         public int CarModelID { get; set; }
@@ -28,5 +29,7 @@ namespace FinalProject3
         public virtual Make Make { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Engine1> Engine1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TotalAmount> TotalAmounts { get; set; }
     }
 }

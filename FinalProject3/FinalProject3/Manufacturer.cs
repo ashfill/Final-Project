@@ -18,6 +18,7 @@ namespace FinalProject3
         public Manufacturer()
         {
             this.Makes = new HashSet<Make>();
+            this.TotalAmounts = new HashSet<TotalAmount>();
         }
     
         public int ManufactuerID { get; set; }
@@ -25,5 +26,7 @@ namespace FinalProject3
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Make> Makes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TotalAmount> TotalAmounts { get; set; }
     }
 }

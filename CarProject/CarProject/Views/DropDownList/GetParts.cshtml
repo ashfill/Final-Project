@@ -1,0 +1,69 @@
+﻿@model IEnumerable <CarProject.TotalAmount>
+@{
+    ViewBag.Title = "GetParts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetParts</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Manufacturers, "Manufacturers", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Manufacturers", new SelectList(Model.Manufacturers, "ManufacturerID", "ManufacturerName"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Manufacturers, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        </div>*@
+
+    @*<div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model, "Makes", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Makes", new SelectList(Model.Makes, "MakeID", "MakeName"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Makes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Engines, "Engines", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Engine", new SelectList(Model.Engines, "EngineID", "EngineName"), htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Engines, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Transmissions, "Transmissions", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Transmissions", new SelectList(Model.Transmissions, "TransmissionID", "TransmissionName"), htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Transmissions, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Turbos, "Turbos", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Turbos", new SelectList(Model.Turbos, "TurboID", "TurboName"), htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Turbos, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Build" class="btn btn-default" />
+            </div>
+        </div>*@
+
+}

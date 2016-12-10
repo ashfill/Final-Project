@@ -29,8 +29,8 @@ namespace FinalProject3
         public virtual DbSet<Engine1> Engine1 { get; set; }
         public virtual DbSet<Make> Makes { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
-        public virtual DbSet<TotalAmount> TotalAmounts { get; set; }
         public virtual DbSet<transmission> transmissions { get; set; }
         public virtual DbSet<turbo> turboes { get; set; }
+        public virtual DbSet<TotalAmount> TotalAmounts { get; set; }
     }
 }

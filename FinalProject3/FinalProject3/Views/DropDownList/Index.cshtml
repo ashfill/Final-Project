@@ -1,5 +1,5 @@
-﻿
-@*@{
+﻿@*@model FinalProject3.Models.Names
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,9 +7,7 @@
 <h2>Index</h2>
 @using (Html.BeginForm())
 {
-    <input type="text" name="txtprice" id="txtprice" onClick="javascript:$('select.foo option:selected').val();">
 
-    <button id="get" style="margin-top:2em; float:right;">Build</button>
     <table>
         <tr>
             <td>
@@ -45,7 +43,7 @@
 
             </td>
         </tr>
-        @*<tr>
+        <tr>
             <td>
                 <label>Transmission</label>
             </td>
@@ -62,11 +60,11 @@
                 @Html.DropDownListFor(x => x.TurboName, new List<SelectListItem>(), "--Select--", new { @id = "ddlTurboes" });
 
             </td>
-        </tr>*@
+        </tr>
 
-    //
-
-    @*<script type="text/javascript">
+    </table>
+    <input type="submit" value="Build" class="btn btn-default"/>
+    <script type="text/javascript">
         $(document).ready(function () {
             $('#ddlManufacturer').change(function () {
                 $.ajax({
@@ -114,47 +112,47 @@
                                                 }
                                                 engine = engine + '</select>';
                                                 $('#Engine1').html(engine);
-                                            //    $('#ddlEngine1').change(function () {
-                                            //        $.ajax({
-                                            //            type: "post",
-                                            //            url: "/DropDownList/GetTransmission",
-                                            //            data: { EngineID: $('#ddlEngine1').val() },
-                                            //            datatype: "json",
-                                            //            traditional: true,
-                                            //            success: function (data) {
-                                            //                var trans = "<select id='ddltransmission'>";
-                                            //                trans = trans + '<option value="">--Select--</option>';
-                                            //                for (var i = 0; i < data.length; i++) {
-                                            //                    trans = trans + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                                            //                }
-                                            //                trans = trans + '</select>';
-                                            //                $('#transmission').html(trans);
-                                            //            }
-                                            //        })
+                                                $('#ddlEngine1').change(function () {
+                                                    $.ajax({
+                                                        type: "post",
+                                                        url: "/DropDownList/GetTransmission",
+                                                        data: { EngineID: $('#ddlEngine1').val() },
+                                                        datatype: "json",
+                                                        traditional: true,
+                                                        success: function (data) {
+                                                            var trans = "<select id='ddltransmission'>";
+                                                            trans = trans + '<option value="">--Select--</option>';
+                                                            for (var i = 0; i < data.length; i++) {
+                                                                trans = trans + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                                                            }
+                                                            trans = trans + '</select>';
+                                                            $('#transmission').html(trans);
+                                                        }
+                                                    })
                                                 
-                                            //    $('#ddltransmission').change(function () {
-                                            //        $.ajax({
-                                            //            type: "post",
-                                            //            url: "/DropDownList/GetTurbo",
-                                            //            data: { TransmissionID: $('#ddltransmission').val() },
-                                            //            datatype: "json",
-                                            //            traditional: true,
-                                            //            success: function (data) {
-                                            //                var turbs = "<select id='ddlTurboes'>";
-                                            //                turbs = turbs + '<option value="">--Select--</option>';
-                                            //                for (var i = 0; i < data.length; i++) {
-                                            //                    turbs = turbs + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                                            //                }
-                                            //                turbs = turbs + '</select>';
-                                            //                $('#Turboes').html(turbs);
+                                                $('#ddltransmission').change(function () {
+                                                    $.ajax({
+                                                        type: "post",
+                                                        url: "/DropDownList/GetTurbo",
+                                                        data: { TransmissionID: $('#ddltransmission').val() },
+                                                        datatype: "json",
+                                                        traditional: true,
+                                                        success: function (data) {
+                                                            var turbs = "<select id='ddlTurboes'>";
+                                                            turbs = turbs + '<option value="">--Select--</option>';
+                                                            for (var i = 0; i < data.length; i++) {
+                                                                turbs = turbs + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                                                            }
+                                                            turbs = turbs + '</select>';
+                                                            $('#Turboes').html(turbs);
 
 
 
-                                            //            }
-                                            //        }
-                                            //        )
-                                            //        })
-                                            //})
+                                                        }
+                                                    }
+                                                    )
+                                                    })
+                                            })
 
 
                                     }
@@ -171,8 +169,8 @@
         });
 
 
-    </script>*@
-
+    </script>
+}*@
     @*<script>
         $(document).ready(function () {
             var Manufacturers = $("#Manufacturer").data("DropDownList"),
@@ -187,5 +185,3 @@
                 alert("Order details:\n" + ManufacturersInfo + MakesInfo + ModelsInfo);
             });
         });*@
-    
-}*@*@ 

@@ -17,6 +17,7 @@ namespace FinalProject3
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public transmission()
         {
+            this.TotalAmounts = new HashSet<TotalAmount>();
             this.turboes = new HashSet<turbo>();
         }
     
@@ -27,6 +28,8 @@ namespace FinalProject3
         public Nullable<int> EngineID { get; set; }
     
         public virtual Engine1 Engine1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TotalAmount> TotalAmounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<turbo> turboes { get; set; }
     }

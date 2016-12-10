@@ -17,6 +17,7 @@ namespace FinalProject3
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Engine1()
         {
+            this.TotalAmounts = new HashSet<TotalAmount>();
             this.transmissions = new HashSet<transmission>();
         }
     
@@ -28,6 +29,8 @@ namespace FinalProject3
         public string Price { get; set; }
     
         public virtual CarModel CarModel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TotalAmount> TotalAmounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<transmission> transmissions { get; set; }
     }

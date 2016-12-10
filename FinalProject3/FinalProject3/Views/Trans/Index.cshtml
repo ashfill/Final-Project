@@ -1,0 +1,43 @@
+﻿@model FinalProject3.Models.Tran
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<link href="~/StyleSheet1.css" rel="stylesheet" />
+<table style="width:90%; text-align: center; background-color:dimgray; padding: 10px;color:white;">
+    <tr>
+        <td style="padding: 10px; text-align: center; height:30px; background-color:dimgray;
+          font-size:20pt; font-weight:bold; color:white;">
+            Transmissions
+            @*@Html.DropDownList("EngineList", Model.EngineList)*@
+    </tr>
+    <tr>
+        <td>
+            <div id="TransGrid">
+                @Html.Partial("ShowTrans", Model.TransGrid)
+            </div>
+        </td>
+    </tr>
+</table>
+@*<script>
+        $(document).ready(function () {
+            $("#EngineList").append($("<option></option>").val("0").html("Shells"));
+            $("#EngineList").val("0");
+        });
+    </script>
+    <script type="text/javascript">
+        $('EngineList').change(function (e) {
+            e.preventDefault();
+            var url = '@Url.Action("Filter")';
+            $.get(url, { CarModelID: $(this).val() }, function (result) {
+                $('#EngineGrid').html(result);
+            });
+        });
+    </script>*@
+
+
+
+

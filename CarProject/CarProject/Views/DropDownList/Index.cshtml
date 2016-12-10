@@ -1,0 +1,39 @@
+﻿@*@model IEnumerable<CarProject.>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Engines)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Makes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transmissions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Turbos)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Engines)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Makes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transmissions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turbos)
+            </td>*@

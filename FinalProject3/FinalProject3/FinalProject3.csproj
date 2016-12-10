@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="eBay.Service, Version=3.981.0.0, Culture=neutral, PublicKeyToken=1d9d786a5932eaf0, processorArchitecture=MSIL">
+      <HintPath>..\packages\eBay.3.981.0\lib\net40\eBay.Service.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -192,7 +196,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MakesController.cs" />
     <Compile Include="Controllers\ManufacturersController.cs" />
+    <Compile Include="Controllers\TransController.cs" />
     <Compile Include="Controllers\transmissionsController.cs" />
+    <Compile Include="Controllers\TurbController.cs" />
     <Compile Include="Controllers\turboesController.cs" />
     <Compile Include="Engine1.cs">
       <DependentUpon>Cars.tt</DependentUpon>
@@ -206,10 +212,12 @@
     <Compile Include="Manufacturer.cs">
       <DependentUpon>Cars.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\All 4 Models.cs" />
+    <Compile Include="Models\Ebay.cs" />
     <Compile Include="Models\Engine.cs" />
     <Compile Include="Models\Shell.cs" />
     <Compile Include="Models\Names.cs" />
+    <Compile Include="Models\Tran.cs" />
+    <Compile Include="Models\Turb.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TotalAmount.cs">
@@ -251,6 +259,7 @@
     <Content Include="Cars.edmx.diagram">
       <DependentUpon>Cars.edmx</DependentUpon>
     </Content>
+    <None Include="ebaySvc.wsdl" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -317,6 +326,12 @@
     <Content Include="Views\Shell\ShowShells.cshtml" />
     <Content Include="Views\Engines\Index.cshtml" />
     <Content Include="Views\Engines\ShowEngines.cshtml" />
+    <Content Include="Views\Trans\Index.cshtml" />
+    <Content Include="Views\Trans\ShowTrans.cshtml" />
+    <Content Include="Views\Turb\Index.cshtml" />
+    <Content Include="Views\Turb\ShowTurbo.cshtml" />
+    <Content Include="Views\DropDownList\GetParts.cshtml" />
+    <Content Include="Views\DropDownList\Part.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -331,6 +346,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

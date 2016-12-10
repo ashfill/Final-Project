@@ -1,0 +1,57 @@
+﻿@model CarProject.transmission
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>transmission</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TransmissionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransmissionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransmissionType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransmissionType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Engine1.EngineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Engine1.EngineName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

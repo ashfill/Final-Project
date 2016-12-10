@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CarProject.transmission>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransmissionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransmissionType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Engine1.EngineName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransmissionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransmissionType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Engine1.EngineName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TransmissionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TransmissionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TransmissionID })
+        </td>
+    </tr>
+}
+
+</table>

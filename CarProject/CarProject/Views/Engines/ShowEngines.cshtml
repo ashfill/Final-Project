@@ -1,0 +1,19 @@
+﻿<div id="gridposition" style="width: 100%;">
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        var grid1 = new WebGrid(source: Model, canPage: true, rowsPerPage: 10, ajaxUpdateContainerId: "gridContent");
+
+        @grid1.GetHtml(mode: WebGridPagerModes.All,
+            tableStyle: "gridTable",
+            headerStyle: "gridHead",
+            footerStyle: "gridFooter",
+            rowStyle: "gridRow",
+            alternatingRowStyle: "gridAltRow",
+            htmlAttributes: new { id = "positionGrid" },
+            fillEmptyRows: false,
+            columns: grid1.Columns(
+             grid1.Column("EngineID", header: "EngineID"),
+             grid1.Column("EngineName", header: "EngineName"),
+             grid1.Column("Price", header: "Price")))
+    }
+</div>  
