@@ -8,6 +8,7 @@ namespace CarProject.Models
     public class LinqClass
     {
         public Manufacturer Manufactuer { get; set; }
+        public CarModel CarModel { get; set; }
         public Make Make { get; set; }
         public Engine1 Engine { get; set; }
         public transmission transmission { get; set; }

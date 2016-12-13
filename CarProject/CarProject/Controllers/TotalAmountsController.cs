@@ -22,7 +22,11 @@ namespace CarProject.Controllers
             string user = User.Identity.Name;
             IEnumerable<TotalAmount> myBuilds = getvehicle.GetBuildsByUserName(user);
 
-            var totalAmounts = db.TotalAmounts.Include(t => t.Engine1).Include(t => t.Make).Include(t => t.transmission).Include(t => t.turbo).Include(t => t.TotalCost);
+            var totalAmounts = db.TotalAmounts.Include(t => t.Engine1).Include(t => t.Make).Include(t => t.transmission).Include(t => t.turbo);
+            foreach (var build in totalAmounts)
+            {
+                build.TotalCost = build.CarModel.Price + build.Engine1.Price + build.transmission.Price + build.turbo.Price;
+            }
             return View(myBuilds);
         }
 

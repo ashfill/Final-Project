@@ -257,6 +257,7 @@
       <DependentUpon>Cars.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CostOfBuild.cs" />
     <Compile Include="Models\LinqClass.cs" />
     <Compile Include="Models\Ebays.cs" />
     <Compile Include="Models\Engine.cs" />

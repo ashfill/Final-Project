@@ -11,7 +11,6 @@ namespace CarProject.Models
         public static IEnumerable<TotalAmount> GetBuildsByUserName(string user)
         {
             FinalProject3Entities1 db = new CarProject.FinalProject3Entities1();
-
             //var Cars = from BulUser in db.TotalAmounts
             //           join U in db.TotalAmounts on new {BulUser.MakeID, BulUser.EngineID, BulUser.TransmissionID, BulUser.TurboID, BulUser.CarModelID,BulUser.TotalCost } equals new {U.MakeID, U.EngineID, U.TransmissionID, U.TurboID, U.CarModelID, U.TotalCost }
             //           where BulUser.BuildUser == user
@@ -22,20 +21,19 @@ namespace CarProject.Models
         return Cars;
         }
 
-        //public static void deleteBuildfromuser(string buluser, int manufacturerid)
-        //{
-        //    using (FinalProject3Entities2 db = new CarProject.FinalProject3Entities2())
-        //    {
-        //        var propdelete = (from pd in db.TotalAmounts
-        //                          where pd.ManufacturerID == manufacturerid && pd.BuildUser == buluser
-        //                          select pd).FirstOrDefault();
 
-        //        if (propdelete != null)
-        //        {
-        //            db.TotalAmounts.Remove(propdelete);
-        //            db.SaveChanges();
-        //        }
-            }
+
+        //public static double TotalCost(LinqClass totalCost)
+        //{
+        //    var TC = 0;
+
+        //    foreach (LinqClass a in totalCost)
+        //    {
+        //        TC = totalCost.Engine.Price + totalCost.CarModel.Price + BuildCost.transmission.Price + BuildCost.turbo.Price
+        //    }
+        //    return (TC);
+        //}
+    }
         }
     
                        
