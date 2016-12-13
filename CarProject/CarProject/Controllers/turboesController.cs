@@ -12,10 +12,10 @@ namespace CarProject.Controllers
 {
     public class turboesController : Controller
     {
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
 
         // GET: turboes
-        [Authorize]
+       
         public ActionResult Index()
         {
             var turboes = db.turboes.Include(t => t.transmission);
@@ -23,7 +23,7 @@ namespace CarProject.Controllers
         }
 
         // GET: turboes/Details/5
-        [Authorize]
+      
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,7 +39,7 @@ namespace CarProject.Controllers
         }
 
         // GET: turboes/Create
-        [Authorize]
+       
         public ActionResult Create()
         {
             ViewBag.TransmissionID = new SelectList(db.transmissions, "TransmissionID", "TransmissionName");
@@ -51,7 +51,7 @@ namespace CarProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+       
         public ActionResult Create([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,TransmissionID,Price")] turbo turbo)
         {
             if (ModelState.IsValid)
@@ -66,7 +66,7 @@ namespace CarProject.Controllers
         }
 
         // GET: turboes/Edit/5
-        [Authorize]
+       
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -87,7 +87,7 @@ namespace CarProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+       
         public ActionResult Edit([Bind(Include = "TurboID,TurboName,TurboHPRating,TurboTurbineSize,TransmissionID,Price")] turbo turbo)
         {
             if (ModelState.IsValid)
@@ -101,7 +101,7 @@ namespace CarProject.Controllers
         }
 
         // GET: turboes/Delete/5
-        [Authorize]
+       
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -119,7 +119,7 @@ namespace CarProject.Controllers
         // POST: turboes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
+       
         public ActionResult DeleteConfirmed(int id)
         {
             turbo turbo = db.turboes.Find(id);

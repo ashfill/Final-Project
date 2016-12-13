@@ -4,32 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="47e3593393594f8380d7a79ffaf37ae2" Name="Diagram1">
-        <EntityTypeShape EntityType="FinalProject2Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.AspNetRole" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.AspNetUser" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.CarModel" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.Engine1" Width="1.5" PointX="7.5" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.Make" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.Manufacturer" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.TotalAmount" Width="1.5" PointX="14.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.transmission" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalProject2Model.turbo" Width="1.5" PointX="12" PointY="7.25" IsExpanded="true" />
-        <AssociationConnector Association="FinalProject2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_CarModel_Make" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_Engine1_CarModel1" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_TotalAmount_Engine1" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_transmission_Engine1" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_Make_Manufacturer" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_TotalAmount_Make" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_TotalAmount_Manufacturer" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_TotalAmount_transmission" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_TotalAmount_turbo" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.FK_turbo_transmission" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalProject2Model.AspNetUserRoles" ManuallyRouted="false" />
+      <Diagram DiagramId="5f1741caac3d4fc3ac4a5ea5e80800aa" Name="Diagram1">
+        <EntityTypeShape EntityType="FinalProject3Model.AspNetRole" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.AspNetUser" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.CarModel" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.Engine1" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.Make" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.Manufacturer" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.TotalAmount" Width="1.5" PointX="14.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.transmission" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject3Model.turbo" Width="1.5" PointX="12" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="FinalProject3Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_CarModel_Make" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_Engine1_CarModel1" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_TotalAmount_CarModel" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_TotalAmount_Engine11" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_transmission_Engine11" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_Make_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_TotalAmount_Make" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_TotalAmount_transmission" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_TotalAmount_turbo" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.FK_turbo_transmission" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject3Model.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

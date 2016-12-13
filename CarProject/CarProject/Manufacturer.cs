@@ -18,15 +18,12 @@ namespace CarProject
         public Manufacturer()
         {
             this.Makes = new HashSet<Make>();
-            this.TotalAmounts = new HashSet<TotalAmount>();
         }
     
-        public int ManufactuerID { get; set; }
-        public string ManufactuerName { get; set; }
+        public int ManufacturerID { get; set; }
+        public string ManufacturerName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Make> Makes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TotalAmount> TotalAmounts { get; set; }
     }
 }

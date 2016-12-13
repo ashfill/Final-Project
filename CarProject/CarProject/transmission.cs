@@ -24,8 +24,8 @@ namespace CarProject
         public int TransmissionID { get; set; }
         public string TransmissionName { get; set; }
         public string TransmissionType { get; set; }
-        public string Price { get; set; }
-        public Nullable<int> EngineID { get; set; }
+        public decimal Price { get; set; }
+        public int EngineID { get; set; }
     
         public virtual Engine1 Engine1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

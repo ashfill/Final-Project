@@ -15,16 +15,17 @@ namespace CarProject
     public partial class TotalAmount
     {
         public int TotalAmountID { get; set; }
-        public int ManufacturerID { get; set; }
         public int MakeID { get; set; }
-        public int Engine1ID { get; set; }
+        public int CarModelID { get; set; }
+        public int EngineID { get; set; }
         public int TransmissionID { get; set; }
         public int TurboID { get; set; }
         public string BuildUser { get; set; }
+        public decimal TotalCost { get; set; }
     
+        public virtual CarModel CarModel { get; set; }
         public virtual Engine1 Engine1 { get; set; }
         public virtual Make Make { get; set; }
-        public virtual Manufacturer Manufacturer { get; set; }
         public virtual transmission transmission { get; set; }
         public virtual turbo turbo { get; set; }
     }

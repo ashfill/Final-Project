@@ -12,10 +12,10 @@ namespace CarProject.Controllers
 {
     public class MakesController : Controller
     {
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
 
         // GET: Makes
-        [Authorize]
+        
         public ActionResult Index()
         {
             var makes = db.Makes.Include(m => m.Manufacturer);
@@ -23,7 +23,7 @@ namespace CarProject.Controllers
         }
 
         // GET: Makes/Details/5
-        [Authorize]
+       
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,10 +39,10 @@ namespace CarProject.Controllers
         }
 
         // GET: Makes/Create
-        [Authorize]
+        
         public ActionResult Create()
         {
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufactuerID", "ManufactuerName");
+            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "ManufacturerName");
             return View();
         }
 
@@ -51,7 +51,7 @@ namespace CarProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        
         public ActionResult Create([Bind(Include = "MakeID,MakeName,ManufacturerID")] Make make)
         {
             if (ModelState.IsValid)
@@ -61,12 +61,12 @@ namespace CarProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufactuerID", "ManufactuerName", make.ManufacturerID);
+            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "ManufacturerName", make.ManufacturerID);
             return View(make);
         }
 
         // GET: Makes/Edit/5
-        [Authorize]
+        
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,7 +78,7 @@ namespace CarProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufactuerID", "ManufactuerName", make.ManufacturerID);
+            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "ManufacturerName", make.ManufacturerID);
             return View(make);
         }
 
@@ -87,7 +87,7 @@ namespace CarProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        
         public ActionResult Edit([Bind(Include = "MakeID,MakeName,ManufacturerID")] Make make)
         {
             if (ModelState.IsValid)
@@ -96,12 +96,12 @@ namespace CarProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufactuerID", "ManufactuerName", make.ManufacturerID);
+            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "ManufacturerName", make.ManufacturerID);
             return View(make);
         }
 
         // GET: Makes/Delete/5
-        [Authorize]
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -119,7 +119,7 @@ namespace CarProject.Controllers
         // POST: Makes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
+      
         public ActionResult DeleteConfirmed(int id)
         {
             Make make = db.Makes.Find(id);

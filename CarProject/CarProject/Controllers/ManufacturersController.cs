@@ -13,7 +13,7 @@ namespace CarProject.Controllers
 {
     public class ManufacturersController : Controller
     {
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
 
         // GET: Manufacturers
         [Authorize]
@@ -51,7 +51,7 @@ namespace CarProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ManufactuerID,ManufactuerName")] Manufacturer manufacturer)
+        public ActionResult Create([Bind(Include = "ManufacturerID,ManufacturerName")] Manufacturer manufacturer)
         {
             if (ModelState.IsValid)
             {

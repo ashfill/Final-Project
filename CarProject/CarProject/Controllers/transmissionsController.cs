@@ -12,10 +12,10 @@ namespace CarProject.Controllers
 {
     public class transmissionsController : Controller
     {
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
 
         // GET: transmissions
-        [Authorize]
+       
         public ActionResult Index()
         {
             var transmissions = db.transmissions.Include(t => t.Engine1);
@@ -23,7 +23,7 @@ namespace CarProject.Controllers
         }
 
         // GET: transmissions/Details/5
-        [Authorize]
+       
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,7 +39,7 @@ namespace CarProject.Controllers
         }
 
         // GET: transmissions/Create
-        [Authorize]
+       
         public ActionResult Create()
         {
             ViewBag.EngineID = new SelectList(db.Engine1, "EngineID", "EngineName");
@@ -51,7 +51,7 @@ namespace CarProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        
         public ActionResult Create([Bind(Include = "TransmissionID,TransmissionName,TransmissionType,Price,EngineID")] transmission transmission)
         {
             if (ModelState.IsValid)
@@ -66,7 +66,7 @@ namespace CarProject.Controllers
         }
 
         // GET: transmissions/Edit/5
-        [Authorize]
+       
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -87,7 +87,7 @@ namespace CarProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        
         public ActionResult Edit([Bind(Include = "TransmissionID,TransmissionName,TransmissionType,Price,EngineID")] transmission transmission)
         {
             if (ModelState.IsValid)
@@ -101,7 +101,7 @@ namespace CarProject.Controllers
         }
 
         // GET: transmissions/Delete/5
-        [Authorize]
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -119,7 +119,7 @@ namespace CarProject.Controllers
         // POST: transmissions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
+       
         public ActionResult DeleteConfirmed(int id)
         {
             transmission transmission = db.transmissions.Find(id);

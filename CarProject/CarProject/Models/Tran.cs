@@ -12,6 +12,6 @@ namespace CarProject.Models
         public int TransmissionID { get; set; }
         public string TransmissionName { get; set; }
         public string TransmissionType { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
     }
 }

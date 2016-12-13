@@ -10,7 +10,7 @@ namespace CarProject.Controllers
     {
         // GET: Engines
        
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
         // GET: Engines
         [Authorize]
         public ActionResult Index()

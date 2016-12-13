@@ -9,7 +9,7 @@ namespace CarProject.Controllers
 {
     public class TransController : Controller
     {
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
         // GET: Trans
         [Authorize]
         public ActionResult Index()

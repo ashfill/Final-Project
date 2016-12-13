@@ -11,6 +11,6 @@ namespace CarProject.Models
         public List<Shell> ShellGrid { get; set; }
         public int CarModelID { get; set; }
         public string CarModelName { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
     }
 }

@@ -18,15 +18,18 @@ namespace CarProject
         public CarModel()
         {
             this.Engine1 = new HashSet<Engine1>();
+            this.TotalAmounts = new HashSet<TotalAmount>();
         }
     
         public int CarModelID { get; set; }
         public string CarModelName { get; set; }
         public int MakeID { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
     
         public virtual Make Make { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Engine1> Engine1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TotalAmount> TotalAmounts { get; set; }
     }
 }

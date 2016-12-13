@@ -12,7 +12,7 @@ namespace CarProject.Controllers
 {
     public class CarModelsController : Controller
     {
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
 
         // GET: CarModels
         [Authorize]
@@ -119,7 +119,7 @@ namespace CarProject.Controllers
         // POST: CarModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        
         public ActionResult DeleteConfirmed(int id)
         {
             CarModel carModel = db.CarModels.Find(id);

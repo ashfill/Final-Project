@@ -12,13 +12,29 @@
     <h4>TotalAmount</h4>
     <hr />
     <dl class="dl-horizontal">
-        @*<dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.BuildUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuildUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalCost)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.CarModel.CarModelName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.CarModel.CarModelName)
-        </dd>*@
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Engine1.EngineName)
@@ -37,14 +53,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Manufacturer.ManufactuerName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Manufacturer.ManufactuerName)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.transmission.TransmissionName)
         </dt>
 
@@ -59,7 +67,6 @@
         <dd>
             @Html.DisplayFor(model => model.turbo.TurboName)
         </dd>
-        
 
     </dl>
 

@@ -24,8 +24,8 @@ namespace CarProject
         public string TurboName { get; set; }
         public string TurboHPRating { get; set; }
         public string TurboTurbineSize { get; set; }
-        public Nullable<int> TransmissionID { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
+        public int TransmissionID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TotalAmount> TotalAmounts { get; set; }

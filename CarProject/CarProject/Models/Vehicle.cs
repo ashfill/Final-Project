@@ -13,6 +13,7 @@ namespace CarProject.Models
         public IEnumerable<Manufacturer> Manufacturers { get; set; }
         public IEnumerable<transmission> Transmissions { get; set; }
         public IEnumerable<turbo> Turbos { get; set; }
+       
 
     }
 }

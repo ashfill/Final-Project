@@ -13,10 +13,10 @@ namespace CarProject.Controllers
 {
     public class Engine1Controller : Controller
     {
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
 
         // GET: Engine1
-        [Authorize]
+        
         public ActionResult Index()
         {
             var engine1 = db.Engine1.Include(e => e.CarModel); 
@@ -24,7 +24,7 @@ namespace CarProject.Controllers
         }
 
         // GET: Engine1/Details/5
-        [Authorize]
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,7 +40,7 @@ namespace CarProject.Controllers
         }
 
         // GET: Engine1/Create
-        [Authorize]
+        
         public ActionResult Create()
         {
             ViewBag.CarModelID = new SelectList(db.CarModels, "CarModelID", "CarModelName");
@@ -52,8 +52,8 @@ namespace CarProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult Create([Bind(Include = "EngineID,EngineName,EngineHPRating,EngineTorque,CarModelID,Price")] Engine1 engine1)
+       
+        public ActionResult Create([Bind(Include = "EngineID,EngineName,EngineHPRating,EngineTorqueRating,CarModelID,Price")] Engine1 engine1)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace CarProject.Controllers
         }
 
         // GET: Engine1/Edit/5
-        [Authorize]
+       
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -88,8 +88,8 @@ namespace CarProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult Edit([Bind(Include = "EngineID,EngineName,EngineHPRating,EngineTorque,CarModelID,Price")] Engine1 engine1)
+       
+        public ActionResult Edit([Bind(Include = "EngineID,EngineName,EngineHPRating,EngineTorqueRating,CarModelID,Price")] Engine1 engine1)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace CarProject.Controllers
         }
 
         // GET: Engine1/Delete/5
-        [Authorize]
+     
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -120,7 +120,7 @@ namespace CarProject.Controllers
         // POST: Engine1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        
         public ActionResult DeleteConfirmed(int id)
         {
             Engine1 engine1 = db.Engine1.Find(id);

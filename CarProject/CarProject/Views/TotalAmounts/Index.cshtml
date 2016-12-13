@@ -12,9 +12,10 @@
 </p>
 <table class="table">
     <tr>
-        @*<th>
+
+        <th>
             @Html.DisplayNameFor(model => model.CarModel.CarModelName)
-        </th>*@
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Engine1.EngineName)
         </th>
@@ -22,22 +23,22 @@
             @Html.DisplayNameFor(model => model.Make.MakeName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Manufacturer.ManufactuerName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.transmission.TransmissionName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.turbo.TurboName)
         </th>
-        
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCost)
+        </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        @*<td>
+        <td>
             @Html.DisplayFor(modelItem => item.CarModel.CarModelName)
-        </td>*@
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Engine1.EngineName)
         </td>
@@ -45,19 +46,15 @@
             @Html.DisplayFor(modelItem => item.Make.MakeName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Manufacturer.ManufactuerName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.transmission.TransmissionName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.turbo.TurboName)
         </td>
-        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.TotalAmountID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TotalAmountID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TotalAmountID })
         </td>
     </tr>
 }

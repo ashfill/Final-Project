@@ -13,6 +13,6 @@ namespace CarProject.Models
         public string TurboName { get; set; }
         public string TurboHPRating { get; set; }
         public string TurboTurbineSize { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
     }
 }

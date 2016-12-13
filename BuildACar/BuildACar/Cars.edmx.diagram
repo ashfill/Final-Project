@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3452af92084148ec9e24f24085cff9b1" Name="Diagram1">
+        <EntityTypeShape EntityType="FinalProject4Model.CarModel" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject4Model.Engine1" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject4Model.Make" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject4Model.Manufacturer" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject4Model.TotalAmount" Width="1.5" PointX="14.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject4Model.transmission" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProject4Model.turbo" Width="1.5" PointX="12" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="FinalProject4Model.FK_CarModel_Make" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject4Model.FK_Engine1_CarModel" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject4Model.FK_TotalAmount_CarModel" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject4Model.FK_TotalAmount_Engine1" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject4Model.FK_transmission_Engine1" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject4Model.FK_Make_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject4Model.FK_TotalAmount_Make" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject4Model.FK_TotalAmount_transmission" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject4Model.FK_TotalAmount_turbo" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProject4Model.FK_turbo_transmission" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

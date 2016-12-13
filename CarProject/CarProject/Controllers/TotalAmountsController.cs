@@ -8,26 +8,28 @@ using System.Web;
 using System.Web.Mvc;
 using CarProject;
 using CarProject.Models;
+
 namespace CarProject.Controllers
 {
     public class TotalAmountsController : Controller
     {
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
 
         // GET: TotalAmounts
         [Authorize]
         public ActionResult Index()
         {
-           
+            string user = User.Identity.Name;
+            IEnumerable<TotalAmount> myBuilds = getvehicle.GetBuildsByUserName(user);
 
-            var totalAmounts = db.TotalAmounts.Include(t => t.Engine1).Include(t => t.Make).Include(t => t.Manufacturer).Include(t => t.transmission).Include(t => t.turbo);
-            return View(db.TotalAmounts.ToList());
+            var totalAmounts = db.TotalAmounts.Include(t => t.Engine1).Include(t => t.Make).Include(t => t.transmission).Include(t => t.turbo).Include(t => t.TotalCost);
+            return View(myBuilds);
         }
 
         // GET: TotalAmounts/Details/5
         [Authorize]
         public ActionResult Details(int? id)
-        {
+        { 
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -44,19 +46,11 @@ namespace CarProject.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            TotalAmount Car = new TotalAmount();
-            //ViewBag.CarModelID = new SelectList(db.CarModels, "CarModelID", "CarModelName");
-            ViewBag.Engine1ID = new SelectList(db.Engine1, "EngineID", "EngineName");
+            ViewBag.CarModelID = new SelectList(db.CarModels, "CarModelID", "CarModelName");
+            ViewBag.EngineID = new SelectList(db.Engine1, "EngineID", "EngineName");
             ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName");
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufactuerID", "ManufactuerName");
             ViewBag.TransmissionID = new SelectList(db.transmissions, "TransmissionID", "TransmissionName");
             ViewBag.TurboID = new SelectList(db.turboes, "TurboID", "TurboName");
-
-            //var myProperties = (from BulUser in db.TotalAmounts
-            //                    join tol in db.BuildUsers on BulUser.BuildUserID equals tol.BuildUserID
-            //                    where BulUser.BuildUserID == tol.BuildUserID && tol.BuildUserAuthKey == User.Identity.Name
-            //                    select tol).FirstOrDefault();
-
             return View();
         }
 
@@ -66,23 +60,19 @@ namespace CarProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ManufacturerID,MakeID,Engine1ID,TransmissionID,TurboID,BuildUser")] TotalAmount totalAmount)
+        public ActionResult Create([Bind(Include = "TotalAmountID,MakeID,CarModelID,EngineID,TransmissionID,TurboID,BuildUser,")] TotalAmount totalAmount)
         {
             if (ModelState.IsValid)
             {
-
-                totalAmount.BuildUser = User.Identity.Name; 
-
+                totalAmount.BuildUser = User.Identity.Name;
                 db.TotalAmounts.Add(totalAmount);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
 
-            //ViewBag.CarModelID = new SelectList(db.CarModels, "CarModelID", "CarModelName", totalAmount.CarModelID);
-            ViewBag.Engine1ID = new SelectList(db.Engine1, "EngineID", "EngineName", totalAmount.Engine1ID);
+            ViewBag.CarModelID = new SelectList(db.CarModels, "CarModelID", "CarModelName", totalAmount.CarModelID);
+            ViewBag.EngineID = new SelectList(db.Engine1, "EngineID", "EngineName", totalAmount.EngineID);
             ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName", totalAmount.MakeID);
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufactuerID", "ManufactuerName", totalAmount.ManufacturerID);
             ViewBag.TransmissionID = new SelectList(db.transmissions, "TransmissionID", "TransmissionName", totalAmount.TransmissionID);
             ViewBag.TurboID = new SelectList(db.turboes, "TurboID", "TurboName", totalAmount.TurboID);
             return View(totalAmount);
@@ -101,10 +91,9 @@ namespace CarProject.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.CarModelID = new SelectList(db.CarModels, "CarModelID", "CarModelName", totalAmount.CarModelID);
-            ViewBag.Engine1ID = new SelectList(db.Engine1, "EngineID", "EngineName", totalAmount.Engine1ID);
+            ViewBag.CarModelID = new SelectList(db.CarModels, "CarModelID", "CarModelName", totalAmount.CarModelID);
+            ViewBag.EngineID = new SelectList(db.Engine1, "EngineID", "EngineName", totalAmount.EngineID);
             ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName", totalAmount.MakeID);
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufactuerID", "ManufactuerName", totalAmount.ManufacturerID);
             ViewBag.TransmissionID = new SelectList(db.transmissions, "TransmissionID", "TransmissionName", totalAmount.TransmissionID);
             ViewBag.TurboID = new SelectList(db.turboes, "TurboID", "TurboName", totalAmount.TurboID);
             return View(totalAmount);
@@ -116,7 +105,7 @@ namespace CarProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "ManufacturerID,MakeID,Engine1ID,TransmissionID,TurboID,BuildUser")] TotalAmount totalAmount)
+        public ActionResult Edit([Bind(Include = "TotalAmountID,MakeID,CarModelID,EngineID,TransmissionID,TurboID,BuildUser")] TotalAmount totalAmount)
         {
             if (ModelState.IsValid)
             {
@@ -124,10 +113,9 @@ namespace CarProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.CarModelID = new SelectList(db.CarModels, "CarModelID", "CarModelName", totalAmount.CarModelID);
-            ViewBag.Engine1ID = new SelectList(db.Engine1, "EngineID", "EngineName", totalAmount.Engine1ID);
+            ViewBag.CarModelID = new SelectList(db.CarModels, "CarModelID", "CarModelName", totalAmount.CarModelID);
+            ViewBag.EngineID = new SelectList(db.Engine1, "EngineID", "EngineName", totalAmount.EngineID);
             ViewBag.MakeID = new SelectList(db.Makes, "MakeID", "MakeName", totalAmount.MakeID);
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufactuerID", "ManufactuerName", totalAmount.ManufacturerID);
             ViewBag.TransmissionID = new SelectList(db.transmissions, "TransmissionID", "TransmissionName", totalAmount.TransmissionID);
             ViewBag.TurboID = new SelectList(db.turboes, "TurboID", "TurboName", totalAmount.TurboID);
             return View(totalAmount);
@@ -160,34 +148,6 @@ namespace CarProject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        //[Authorize]
-        //        public ActionResult GetParts()
-        //        {
-        //            GetVehicle Cool = new GetVehicle();
-
-        //            FinalProject2Entities1 db = new FinalProject2Entities1();
-        //            Cool.Manufacturers = db.Manufacturers.ToList();
-        //            Cool.Makes = db.Makes.ToList();
-        //            Cool.Engines = db.Engine1.ToList();
-        //            Cool.Transmissions = db.transmissions.ToList();
-        //            Cool.Turbos = db.turboes.ToList();
-
-        //            return View(Cool);
-        //        }
-
-        //        [HttpPost]
-        //        [ValidateAntiForgeryToken]
-        //        [Authorize]
-        //        public ActionResult Getparts()
-        //        {
-        //            //string manufacturers = db.Manufacturers.ToString();
-        //            string makes = db.Makes.ToString();
-        //            string engines = db.Engine1.ToString();
-        //            string transmissions = db.transmissions.ToString();
-        //            string turbos = db.turboes.ToString();
-
-        //            return RedirectToAction("Index");
-        //        }
 
         protected override void Dispose(bool disposing)
         {

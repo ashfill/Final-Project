@@ -9,7 +9,7 @@ namespace CarProject.Controllers
 {
     public class TurbController : Controller
     {
-        private FinalProject2Entities3 db = new FinalProject2Entities3();
+        private FinalProject3Entities1 db = new FinalProject3Entities1();
         // GET: Turb
         [Authorize]
         public ActionResult Index()
