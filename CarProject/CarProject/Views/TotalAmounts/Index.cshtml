@@ -1,62 +1,67 @@
 ﻿@model IEnumerable<CarProject.TotalAmount>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Compeleted Builds";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Completed Builds</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
+<div class="Image">
+    <table class="table">
+        <tr>
 
-        <th>
-            @Html.DisplayNameFor(model => model.CarModel.CarModelName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Engine1.EngineName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Make.MakeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.transmission.TransmissionName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.turbo.TurboName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalCost)
-        </th>
-        <th></th>
-    </tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Make.MakeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarModel.CarModelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Engine1.EngineName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.transmission.TransmissionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.turbo.TurboName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CarModel.CarModelName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Engine1.EngineName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Make.MakeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.transmission.TransmissionName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.turbo.TurboName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TotalAmountID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TotalAmountID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TotalAmountID })
-        </td>
-    </tr>
-}
-
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make.MakeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarModel.CarModelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Engine1.EngineName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.transmission.TransmissionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.turbo.TurboName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalCost)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TotalAmountID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TotalAmountID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TotalAmountID })
+                </td>
+            </tr>
+        }
+</div>
 </table>

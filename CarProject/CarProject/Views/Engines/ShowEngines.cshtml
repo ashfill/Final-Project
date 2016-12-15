@@ -12,8 +12,9 @@
             htmlAttributes: new { id = "positionGrid" },
             fillEmptyRows: false,
             columns: grid1.Columns(
-             grid1.Column("EngineID", header: "EngineID"),
-             grid1.Column("EngineName", header: "EngineName"),
+             grid1.Column("EngineName", header: "Name"),
+             grid1.Column("EngineHPRating", header: "Horse Power"),
+             grid1.Column("EngineTorqueRating", header: "Torque"),
              grid1.Column("Price", header: "Price")))
     }
 </div>  

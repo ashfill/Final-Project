@@ -264,6 +264,7 @@
     <Compile Include="Models\GetVehicle.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PartialClass.cs" />
     <Compile Include="Models\Shell.cs" />
     <Compile Include="Models\Tran.cs" />
     <Compile Include="Models\Turb.cs" />
@@ -319,6 +320,13 @@
       <DependentUpon>Cars.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Images\engine.jpg" />
+    <Content Include="Images\ford.jpg" />
+    <Content Include="Images\monster.jpg" />
+    <Content Include="Images\perf.jpg" />
+    <Content Include="Images\trans.jpg" />
+    <Content Include="Images\turb.jpg" />
+    <Content Include="Images\wrx.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

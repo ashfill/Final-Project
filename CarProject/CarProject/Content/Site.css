@@ -4,13 +4,15 @@
     /*background-image: url("../images/car2.jpg");*/
      /*background-repeat:no-repeat;
      background-size:auto;*/
-     color:cornflowerblue;
+     color:white;
+     background-color:dimgray;
+     line-height: 3.428571;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0
+    padding-right: 0;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -33,13 +35,13 @@ textarea {
 .navbar-inverse .navbar-nav > li > a {
     color:Highlight;
 }
-.Image {
+/*.Image {
     position:relative;
 }
 .image:after {
     content:"";
     display:block;
-    position:absolute;
+    position:fixed;
     top:0;
     left:0;
     background-image: url(../images/car2.jpg);
@@ -47,9 +49,9 @@ textarea {
      background-size:auto;
     width:350%;
     height:350%;
-    opacity:0.1;
+    opacity:.2;
     z-index:-1;
-}
+}*/
 .dropbtn {
     background-color:dimgray;
     color:cornflowerblue;
@@ -77,7 +79,7 @@ textarea {
     }
     .dropdown-content a:hover {background-color:white}
 .dropdown:hover .dropdown-content {
-    display:flex;
+    display:block;
 }
 .dropdown:hover .dropbtn {
     background-color:cornflowerblue;
@@ -105,3 +107,100 @@ textarea {
 18px -24px 0px rgba(0, 0, 0, 0.34),
 33px -6px 0px rgba(39, 74, 214, 0.28);
 }
+.container.body-content{
+    background-color:dimgray;
+    opacity:.9;
+    padding-left:0;
+    padding-right:0;
+}
+.jumbotron{
+    background-color:transparent;
+}
+a {
+    color: rgb(175, 178, 181);
+    text-decoration: none;
+}
+/*.Image2 {
+}
+.Image2:after {
+    content:"";
+    display:block;
+    position:center;
+    top:0;
+    left:0;
+    background-image: url(../images/perf.jpg);
+     background-repeat:no-repeat;
+     background-size:auto;
+    width:350%;
+    height:350%;
+    opacity:.2;
+    z-index:-1;
+}
+.Image3 {
+    position:relative;
+}
+.Image3:after {
+    content:"";
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    background-image: url(../images/engine.jpg);
+     background-repeat:no-repeat;
+     background-size:auto;
+    width:350%;
+    height:350%;
+    opacity:.4;
+    z-index:-1;
+}
+.Image4 {
+    position:relative;
+}
+.Image4:after {
+    content:"";
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    background-image: url(../images/monster.jpg);
+     background-repeat:no-repeat;
+     background-size:auto;
+    width:350%;
+    height:350%;
+    opacity:.4;
+    z-index:-1;
+}
+.Image5 {
+    position:relative;
+}
+.Image5:after {
+    content:"";
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    background-image: url(../images/trans.jpg);
+     background-repeat:no-repeat;
+     background-size:auto;
+    width:350%;
+    height:350%;
+    opacity:.4;
+    z-index:-1;
+}
+.Image6 {
+    position:relative;
+}
+.Image6:after {
+    content:"";
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    background-image: url(../images/turb.jpg);
+     background-repeat:no-repeat;
+     background-size:auto;
+    width:350%;
+    height:350%;
+    opacity:.4;
+    z-index:-1;
+}*/

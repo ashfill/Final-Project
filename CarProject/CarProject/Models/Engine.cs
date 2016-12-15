@@ -11,6 +11,8 @@ namespace CarProject.Models
         public List<Engine> EngineGrid { get; set; }
         public int EngineID { get; set; }
         public string EngineName { get; set; }
+        public string EngineHPRating { get; set; }
+        public string EngineTorqueRating { get; set; }
         public decimal Price { get; set; }
     }
 }

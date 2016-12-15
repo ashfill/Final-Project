@@ -30,6 +30,8 @@ namespace CarProject.Controllers
                           {
                               EngineID = e.EngineID,
                               EngineName = e.EngineName,
+                              EngineHPRating = e.EngineHPRating,
+                              EngineTorqueRating = e.EngineTorqueRating,
                               Price = e.Price
                           }).ToList();
 
@@ -60,6 +62,8 @@ namespace CarProject.Controllers
                           {
                               EngineID = e.EngineID,
                               EngineName = e.EngineName,
+                              EngineHPRating = e.EngineHPRating,
+                              EngineTorqueRating = e.EngineTorqueRating,
                               Price = e.Price
                           }).ToList();
             }
